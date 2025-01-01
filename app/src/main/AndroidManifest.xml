@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAssignment"
         tools:targetApi="31">
-
+        <activity
+            android:name=".symptom.SymptomTrackingMainActivity"
+            android:exported="false" />
         <!-- General -->
         <activity
             android:name=".general.SignUpActivity"
@@ -35,7 +37,6 @@
         <activity
             android:name=".general.MainActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,9 +51,7 @@
             android:exported="false" />
         <activity
             android:name=".general.ForgotPasswordActivity"
-            android:exported="false" />
-
-        <!-- Medication -->
+            android:exported="false" /> <!-- Medication -->
         <activity
             android:name=".medication.ReminderActivity"
             android:exported="false" />
@@ -61,18 +60,13 @@
             android:exported="false" />
         <activity
             android:name=".medication.ChooseMedicationActivity"
-            android:exported="false" />
-
-        <!-- Education -->
+            android:exported="false" /> <!-- Education -->
         <activity
             android:name=".education.DetailedActivity"
             android:exported="false" />
         <activity
             android:name=".education.EducationMainActivity"
-            android:exported="false">
-        </activity>
-
-        <!-- Calendar -->
+            android:exported="false"></activity> <!-- Calendar -->
         <activity
             android:name=".calendar.MedicationCalendar"
             android:exported="false" />
@@ -81,9 +75,7 @@
             android:exported="false" />
         <activity
             android:name=".calendar.AppointmentCalendarActivity"
-            android:exported="false" />
-
-        <!-- Appointment -->
+            android:exported="false" /> <!-- Appointment -->
         <activity
             android:name=".appointment.AppointmentMainActivity"
             android:exported="false" />

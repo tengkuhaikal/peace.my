@@ -92,23 +92,25 @@
     <string name="alzheimers_disease_symptoms">1. Memory loss\n2. Confusion\n3. Difficulty completing familiar tasks\n4. Mood changes\n5. Difficulty speaking or writing</string>
     <string name="alzheimers_disease_treatment">1. Medications: Donepezil, Memantine\n2. Lifestyle: Cognitive therapy, supportive care</string>
 
-        <string-array name="states_array">
-            <item>State</item>
-            <item>Johor</item>
-            <item>Kedah</item>
-            <item>Kelantan</item>
-            <item>Malacca</item>
-            <item>Negeri Sembilan</item>
-            <item>Pahang</item>
-            <item>Penang</item>
-            <item>Perak</item>
-            <item>Perlis</item>
-            <item>Sabah</item>
-            <item>Sarawak</item>
-            <item>Selangor</item>
-            <item>Terengganu</item>
-            <item>WP Kuala Lumpur</item>
-            <item>WP Labuan</item>
-            <item>WP Putrajaya</item>
-        </string-array>
+    <string-array name="states_array">
+        <item>State</item>
+        <item>Johor</item>
+        <item>Kedah</item>
+        <item>Kelantan</item>
+        <item>Malacca</item>
+        <item>Negeri Sembilan</item>
+        <item>Pahang</item>
+        <item>Penang</item>
+        <item>Perak</item>
+        <item>Perlis</item>
+        <item>Sabah</item>
+        <item>Sarawak</item>
+        <item>Selangor</item>
+        <item>Terengganu</item>
+        <item>WP Kuala Lumpur</item>
+        <item>WP Labuan</item>
+        <item>WP Putrajaya</item>
+    </string-array>
+
+    <string name="title">Symptom Tracker</string>
 </resources>

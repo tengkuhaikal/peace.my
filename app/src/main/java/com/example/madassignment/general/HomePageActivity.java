@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.madassignment.R;
+import com.example.madassignment.symptom.SymptomTrackingMainActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,7 +41,7 @@ public class HomePageActivity extends BaseActivity {
         // Symptom Tracking Button
         ImageButton symptomTrackingButton = findViewById(R.id.IBHomeSymptomTracking);
         symptomTrackingButton.setOnClickListener(v ->
-                startActivity(new Intent(this, SymptomTrackingActivity.class))
+                startActivity(new Intent(this, SymptomTrackingMainActivity.class))
         );
 
         // Medication Management Button
@@ -50,10 +51,10 @@ public class HomePageActivity extends BaseActivity {
         );
 
         // Donor Pledge Button
-        ImageButton donorPledgeButton = findViewById(R.id.IBHomeDonorPledge);
-        donorPledgeButton.setOnClickListener(v ->
-                startActivity(new Intent(this, DonorPledgeActivity.class))
-        );
+//        ImageButton donorPledgeButton = findViewById(R.id.IBHomeDonorPledge);
+//        donorPledgeButton.setOnClickListener(v ->
+//                startActivity(new Intent(this, DonorPledgeActivity.class))
+//        );
 
         // Education Button
         ImageButton educationButton = findViewById(R.id.IBHomeEducation);
