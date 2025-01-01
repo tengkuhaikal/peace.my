@@ -12,6 +12,47 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAssignment"
         tools:targetApi="31">
+
+        <!-- General -->
+        <activity
+            android:name=".general.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".general.SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".general.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".general.ResetPasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".general.RequestTACActivity"
+            android:exported="false" />
+        <activity
+            android:name=".general.NotificationsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".general.MainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".general.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".general.HomePageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".general.ForgotPasswordActivity"
+            android:exported="false" />
+
+        <!-- Medication -->
         <activity
             android:name=".medication.ReminderActivity"
             android:exported="false" />
@@ -21,18 +62,17 @@
         <activity
             android:name=".medication.ChooseMedicationActivity"
             android:exported="false" />
+
+        <!-- Education -->
         <activity
             android:name=".education.DetailedActivity"
             android:exported="false" />
         <activity
             android:name=".education.EducationMainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
+        </activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- Calendar -->
+        <!-- Calendar -->
         <activity
             android:name=".calendar.MedicationCalendar"
             android:exported="false" />
@@ -41,7 +81,9 @@
             android:exported="false" />
         <activity
             android:name=".calendar.AppointmentCalendarActivity"
-            android:exported="false" /> <!-- Appointment -->
+            android:exported="false" />
+
+        <!-- Appointment -->
         <activity
             android:name=".appointment.AppointmentMainActivity"
             android:exported="false" />
