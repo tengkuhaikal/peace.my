@@ -1,4 +1,4 @@
-package com.example.madassignment;
+package com.example.madassignment.appointment;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.madassignment.R;
 
 import java.util.Calendar;
 
@@ -80,8 +82,8 @@ public class DateAndTime extends AppCompatActivity {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DateAndTime.this, AppointmentMainActivity.class);
-                Toast.makeText(DateAndTime.this,"Your booking was successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(com.example.madassignment.appointment.DateAndTime.this, AppointmentMainActivity.class);
+                Toast.makeText(com.example.madassignment.appointment.DateAndTime.this,"Your booking was successful", Toast.LENGTH_SHORT).show();
                 startActivity(intent);
             }
         });

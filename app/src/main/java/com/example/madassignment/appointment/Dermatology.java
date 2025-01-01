@@ -1,4 +1,4 @@
-package com.example.madassignment;
+package com.example.madassignment.appointment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.madassignment.R;
 
 public class Dermatology extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.madassignment;
+package com.example.madassignment.calendar;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.madassignment.R;
 
 public class CalendarMainActivity extends AppCompatActivity {
 

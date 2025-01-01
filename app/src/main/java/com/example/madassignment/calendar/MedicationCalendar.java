@@ -1,4 +1,4 @@
-package com.example.madassignment;
+package com.example.madassignment.calendar;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,49 +12,50 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class AppointmentCalendar extends AppCompatActivity {
+import com.example.madassignment.R;
 
-    EditText title;
-    EditText location;
+public class MedicationCalendar extends AppCompatActivity {
+    EditText medicationName;
+    EditText dosage;
     EditText description;
-    Button addAppointment;
+    Button addMedication;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_appointment_calendar);
+        setContentView(R.layout.activity_medication_calendar);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        title = findViewById(R.id.etTitle);
-        location = findViewById(R.id.etLocation);
+        medicationName = findViewById(R.id.etMedicationName);
+        dosage = findViewById(R.id.etDossage);
         description = findViewById(R.id.etDescription);
-        addAppointment = findViewById(R.id.btnAddAppointment);
+        addMedication = findViewById(R.id.btnAddMedication);
 
-        addAppointment.setOnClickListener(new View.OnClickListener() {
+        addMedication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!title.getText().toString().isEmpty() && !location.getText().toString().isEmpty() && !description.getText().toString().isEmpty()) {
+                if (!medicationName.getText().toString().isEmpty() && !dosage.getText().toString().isEmpty() && !description.getText().toString().isEmpty()) {
 
                     Intent intent = new Intent(Intent.ACTION_INSERT);
                     intent.setData(CalendarContract.Events.CONTENT_URI);
 
-                    intent.putExtra(CalendarContract.Events.TITLE, title.getText().toString());
-                    intent.putExtra(CalendarContract.Events.EVENT_LOCATION, location.getText().toString());
+                    intent.putExtra(CalendarContract.Events.TITLE, medicationName.getText().toString());
+                    intent.putExtra(CalendarContract.Events.EVENT_LOCATION, dosage.getText().toString());
                     intent.putExtra(CalendarContract.Events.DESCRIPTION, description.getText().toString());
                     intent.putExtra(CalendarContract.Events.ALL_DAY, true);
 
                     if (intent.resolveActivity(getPackageManager()) != null) {
                         startActivity(intent);
                     } else {
-                        Toast.makeText(AppointmentCalendar.this, "There is no app that can support this action", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MedicationCalendar.this, "There is no app that can support this action", Toast.LENGTH_SHORT).show();
 
                     }
                 } else {
-                    Toast.makeText(AppointmentCalendar.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MedicationCalendar.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });

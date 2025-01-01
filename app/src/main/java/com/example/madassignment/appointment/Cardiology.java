@@ -1,4 +1,4 @@
-package com.example.madassignment;
+package com.example.madassignment.appointment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.madassignment.R;
 
 public class Cardiology extends AppCompatActivity {
 
@@ -36,7 +38,7 @@ public class Cardiology extends AppCompatActivity {
         cardiology1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Cardiology.this, DateAndTime.class);
+                Intent it = new Intent(com.example.madassignment.appointment.Cardiology.this, DateAndTime.class);
                 it.putExtra("DoctorNo", 1);
                 it.putExtra("text1.1", tvDoctor1C.getText().toString());
                 it.putExtra("text1.2", tvDetails1C.getText().toString());
@@ -48,7 +50,7 @@ public class Cardiology extends AppCompatActivity {
         cardiology2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Cardiology.this, DateAndTime.class);
+                Intent it = new Intent(com.example.madassignment.appointment.Cardiology.this, DateAndTime.class);
                 it.putExtra("DoctorNo", 2);
                 it.putExtra("text2.1", tvDoctor2C.getText().toString());
                 it.putExtra("text2.2", tvDetails2C.getText().toString());

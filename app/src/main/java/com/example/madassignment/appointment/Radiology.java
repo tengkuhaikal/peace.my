@@ -1,4 +1,4 @@
-package com.example.madassignment;
+package com.example.madassignment.appointment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.madassignment.R;
 
 public class Radiology extends AppCompatActivity {
 

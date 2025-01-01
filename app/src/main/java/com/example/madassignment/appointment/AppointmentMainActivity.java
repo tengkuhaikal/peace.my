@@ -1,4 +1,4 @@
-package com.example.madassignment;
+package com.example.madassignment.appointment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.madassignment.R;
 
 public class AppointmentMainActivity extends AppCompatActivity {
 
@@ -29,7 +31,7 @@ public class AppointmentMainActivity extends AppCompatActivity {
         radiologyCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(AppointmentMainActivity.this, Radiology.class);
+                Intent it = new Intent(com.example.madassignment.appointment.AppointmentMainActivity.this, Radiology.class);
                 it.putExtra("title", "Radiology");
                 startActivity(it);
             }
@@ -39,7 +41,7 @@ public class AppointmentMainActivity extends AppCompatActivity {
         neurologyCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(AppointmentMainActivity.this, Neurology.class);
+                Intent it = new Intent(com.example.madassignment.appointment.AppointmentMainActivity.this, Neurology.class);
                 it.putExtra("title", "Neurology");
                 startActivity(it);
             }
@@ -49,7 +51,7 @@ public class AppointmentMainActivity extends AppCompatActivity {
         cardiologyCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(AppointmentMainActivity.this, Cardiology.class);
+                Intent it = new Intent(com.example.madassignment.appointment.AppointmentMainActivity.this, Cardiology.class);
                 it.putExtra("title", "Cardiology");
                 startActivity(it);
             }
@@ -59,7 +61,7 @@ public class AppointmentMainActivity extends AppCompatActivity {
         dermatologyCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(AppointmentMainActivity.this, Dermatology.class);
+                Intent it = new Intent(com.example.madassignment.appointment.AppointmentMainActivity.this, Dermatology.class);
                 it.putExtra("title", "Dermatology");
                 startActivity(it);
             }
