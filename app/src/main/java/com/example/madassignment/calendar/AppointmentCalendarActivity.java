@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.madassignment.R;
 
-public class AppointmentCalendar extends AppCompatActivity {
+public class AppointmentCalendarActivity extends AppCompatActivity {
 
     EditText title;
     EditText location;
@@ -52,11 +52,11 @@ public class AppointmentCalendar extends AppCompatActivity {
                     if (intent.resolveActivity(getPackageManager()) != null) {
                         startActivity(intent);
                     } else {
-                        Toast.makeText(AppointmentCalendar.this, "There is no app that can support this action", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AppointmentCalendarActivity.this, "There is no app that can support this action", Toast.LENGTH_SHORT).show();
 
                     }
                 } else {
-                    Toast.makeText(AppointmentCalendar.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AppointmentCalendarActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });
