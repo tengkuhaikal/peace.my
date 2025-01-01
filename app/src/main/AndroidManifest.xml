@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MADAssignment"
+        tools:targetApi="31">
+
+        <!-- Calendar -->
+        <activity
+            android:name=".MedicationCalendar"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AppointmentCalendar"
+            android:exported="false" />
+
+        <!-- Appointment -->
+        <activity
+            android:name=".AppointmentMainActivity"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".Radiology"
+            android:exported="false" />
+        <activity
+            android:name=".Neurology"
+            android:exported="false" />
+        <activity
+            android:name=".Cardiology"
+            android:exported="false" />
+        <activity
+            android:name=".Dermatology"
+            android:exported="false" />
+        <activity
+            android:name=".DateAndTime"
+            android:exported="false" />
+    </application>
+
+</manifest>
