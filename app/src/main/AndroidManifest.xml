@@ -12,13 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAssignment"
         tools:targetApi="31">
-
-        <!-- Calendar -->
         <activity
-            android:name=".calendar.MedicationCalendar"
+            android:name=".education.DetailedActivity"
             android:exported="false" />
         <activity
-            android:name=".calendar.CalendarMainActivity"
+            android:name=".education.EducationMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,13 +24,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Calendar -->
+        <activity
+            android:name=".calendar.MedicationCalendar"
+            android:exported="false" />
+        <activity
+            android:name=".calendar.CalendarMainActivity"
+            android:exported="false" />
         <activity
             android:name=".calendar.AppointmentCalendar"
             android:exported="false" />
 
         <!-- Appointment -->
         <activity
-            android:name=".AppointmentMainActivity"
+            android:name=".appointment.AppointmentMainActivity"
             android:exported="false">
         </activity>
         <activity
@@ -42,13 +48,13 @@
             android:name=".appointment.Neurology"
             android:exported="false" />
         <activity
-            android:name=".Cardiology"
+            android:name=".appointment.Cardiology"
             android:exported="false" />
         <activity
             android:name=".appointment.Dermatology"
             android:exported="false" />
         <activity
-            android:name=".DateAndTime"
+            android:name=".appointment.DateAndTime"
             android:exported="false" />
     </application>
 

@@ -16,7 +16,7 @@
         android:layout_margin="32dp"
         android:fontFamily="@font/poppins_regular"
         android:text="Neurology"
-        android:textColor="@color/black"
+        android:textColor="@color/font_color_dark"
         android:textSize="24sp"
         android:textStyle="bold" />
 

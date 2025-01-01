@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Base Color Codes -->
+    <color name="bg_color">#98A869</color>
+    <color name="primary_btn_color">#355E38</color>
+    <color name="pressed_primary_btn_color">#014421</color>
+    <color name="secondary_btn_color">#D5D5D5</color>
+    <color name="pressed_secondary_btn_color">#999999</color>
+
+    <!-- Font Color Codes -->
+    <color name="font_color_dark">#0F0F0F</color>
+    <color name="font_color_light">#F0F0F0</color>
+
+    <!-- Border Color Code -->
+    <color name="border_color">#D9D9D9</color>
 </resources>
