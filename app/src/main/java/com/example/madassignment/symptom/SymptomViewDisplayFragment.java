@@ -27,7 +27,7 @@ public class SymptomViewDisplayFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_symptom_view_display, container, false);
+        View view = inflater.inflate(R.layout.symptom_fragment_symptom_view_display, container, false);
 
         // Initialize RecyclerView
         diseasesRecyclerView = view.findViewById(R.id.diseasesRecyclerView);

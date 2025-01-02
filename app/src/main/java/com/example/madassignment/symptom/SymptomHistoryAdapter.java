@@ -31,7 +31,7 @@ public class SymptomHistoryAdapter extends RecyclerView.Adapter<SymptomHistoryAd
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_symptom_history_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.symptom_item_symptom_history_view, parent, false);
         return new ViewHolder(view);
     }
 

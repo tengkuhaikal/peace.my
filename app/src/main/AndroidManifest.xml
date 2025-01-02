@@ -17,25 +17,25 @@
             android:exported="false" />
         <!-- General -->
         <activity
-            android:name=".general.SignUpActivity"
+            android:name=".general.GeneralActivitySignUp"
             android:exported="false" />
         <activity
-            android:name=".general.SettingsActivity"
+            android:name=".general.GeneralActivitySettings"
             android:exported="false" />
         <activity
-            android:name=".general.SearchActivity"
+            android:name=".general.GeneralActivitySearch"
             android:exported="false" />
         <activity
-            android:name=".general.ResetPasswordActivity"
+            android:name=".general.GeneralActivityResetPassword"
             android:exported="false" />
         <activity
-            android:name=".general.RequestTACActivity"
+            android:name=".general.GeneralActivityRequestTac"
             android:exported="false" />
         <activity
-            android:name=".general.NotificationsActivity"
+            android:name=".general.GeneralActivityNotification"
             android:exported="false" />
         <activity
-            android:name=".general.MainActivity"
+            android:name=".general.GeneralActivityMain"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,55 +44,55 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".general.LoginActivity"
+            android:name=".general.GeneralActivityLogin"
             android:exported="false" />
         <activity
-            android:name=".general.HomePageActivity"
+            android:name=".general.GeneralActivityHome"
             android:exported="false" />
         <activity
-            android:name=".general.ForgotPasswordActivity"
+            android:name=".general.GeneralActivityForgotPassword"
             android:exported="false" /> <!-- Medication -->
         <activity
-            android:name=".medication.ReminderActivity"
+            android:name=".medication.MedicationActivityReminder"
             android:exported="false" />
         <activity
-            android:name=".medication.MedicationManagementActivity"
+            android:name=".medication.MedicationActivityMedicationManagement"
             android:exported="false" />
         <activity
-            android:name=".medication.ChooseMedicationActivity"
+            android:name=".medication.MedicationActivityChooseMedication"
             android:exported="false" /> <!-- Education -->
         <activity
-            android:name=".education.DetailedActivity"
+            android:name=".education.EducationActivityDetailed"
             android:exported="false" />
         <activity
-            android:name=".education.EducationMainActivity"
+            android:name=".education.EducationActivityMain"
             android:exported="false"></activity> <!-- Calendar -->
         <activity
-            android:name=".calendar.MedicationCalendar"
+            android:name=".calendar.CalendarActivityMedication"
             android:exported="false" />
         <activity
-            android:name=".calendar.CalendarMainActivity"
+            android:name=".calendar.CalendarActivityMain"
             android:exported="false" />
         <activity
-            android:name=".calendar.AppointmentCalendarActivity"
+            android:name=".calendar.CalendarActivityAppointment"
             android:exported="false" /> <!-- Appointment -->
         <activity
-            android:name=".appointment.AppointmentMainActivity"
+            android:name=".appointment.AppointmentActivityMain"
             android:exported="false" />
         <activity
-            android:name=".appointment.Radiology"
+            android:name=".appointment.AppointmentActivityRadiology"
             android:exported="false" />
         <activity
-            android:name=".appointment.Neurology"
+            android:name=".appointment.AppointmentActivityNeurology"
             android:exported="false" />
         <activity
-            android:name=".appointment.Cardiology"
+            android:name=".appointment.AppointmentActivityCardiology"
             android:exported="false" />
         <activity
-            android:name=".appointment.Dermatology"
+            android:name=".appointment.AppointmentActivityDermatology"
             android:exported="false" />
         <activity
-            android:name=".appointment.DateAndTime"
+            android:name=".appointment.AppointmentActivityDateAndTime"
             android:exported="false" />
     </application>
 

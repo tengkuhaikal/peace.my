@@ -15,7 +15,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.madassignment.R;
-import com.example.madassignment.symptom.AppDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class SymptomTrackingMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_symptom_main);
+        setContentView(R.layout.symptom_activity_main);
         Log.d("MainActivity", "onCreate completed");
 
         // Initialize ViewModel

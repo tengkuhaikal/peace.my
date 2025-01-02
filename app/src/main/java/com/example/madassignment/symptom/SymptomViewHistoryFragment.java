@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.madassignment.R;
-import com.example.madassignment.symptom.AppDatabase;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -53,7 +52,7 @@ public class SymptomViewHistoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_symptom_view_history, container, false);
+        View view = inflater.inflate(R.layout.symptom_fragment_symptom_view_history, container, false);
 
         // Initialize RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.symptomHistoryRecyclerView);

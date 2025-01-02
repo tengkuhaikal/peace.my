@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.madassignment.R;
-import com.example.madassignment.symptom.AppDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,7 @@ public class SymptomSelectionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_symptom_selection, container, false);
+        View view = inflater.inflate(R.layout.symptom_fragment_symptom_selection, container, false);
 
         // RecyclerView setup
         RecyclerView recyclerView = view.findViewById(R.id.symptom_recycler_view);

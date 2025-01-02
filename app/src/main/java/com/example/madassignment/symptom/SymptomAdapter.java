@@ -27,7 +27,7 @@ public class SymptomAdapter extends RecyclerView.Adapter<SymptomAdapter.SymptomV
     @NonNull
     @Override
     public SymptomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_symptom, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.symptom_item_symptom, parent, false);
         return new SymptomViewHolder(view);
     }
 

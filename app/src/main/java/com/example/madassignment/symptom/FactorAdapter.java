@@ -24,7 +24,7 @@ public class FactorAdapter extends RecyclerView.Adapter<FactorAdapter.FactorView
     @Override
     public FactorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_factor, parent, false);
+                .inflate(R.layout.symptom_item_factor, parent, false);
         return new FactorViewHolder(view);
     }
 

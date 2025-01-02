@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.madassignment.R;
-import com.example.madassignment.symptom.FactorAdapter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,7 +33,7 @@ public class RelatedFactorSelectionFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_related_factor_selection, container, false);
+        View view = inflater.inflate(R.layout.symptom_fragment_related_factor_selection, container, false);
 
         // Initialize RecyclerView
         factorsRecyclerView = view.findViewById(R.id.factors_recycler_view);
