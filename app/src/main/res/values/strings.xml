@@ -9,7 +9,7 @@
     <string name="diabetes_treatment">1. Medications: Type 1: Insulin injections; Type 2: Metformin or Sulfonylureas\n2. Lifestyle: Healthy diet, regular exercise, blood sugar monitoring</string>
 
     //healthProblem 2: Hypertension (High Blood Pressure)
-    <string name="hypertension">Hypertension (High Blood Pressure)</string>
+    <string name="hypertension">Hypertension</string>
     <string name="hypertension_desc">A condition in which the force of the blood against artery walls is consistently too high.</string>
     <string name="hypertension_symptoms">1. Headaches\n2. Shortness of breath\n3. Nosebleeds\n4. Fatigue or confusion\n5. Chest pain</string>
     <string name="hypertension_treatment">1. Medications: ACE inhibitors, Beta-blockers, Diuretics\n2. Lifestyle: Reduce salt intake, exercise regularly, manage stress</string>
