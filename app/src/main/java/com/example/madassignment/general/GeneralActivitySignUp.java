@@ -102,7 +102,7 @@ public class GeneralActivitySignUp extends AppCompatActivity {
                     !state.equals("Select State") && !dob.isEmpty() && !phone.isEmpty()) {
                 executorService.execute(() -> {
                     GeneralUser generalUser = new GeneralUser(username, password, firstName, lastName, address, address2, postcode, city, state, dob, phone);
-                    GeneralAppDatabase.getDatabase(getApplicationContext()).userDao().insertUser(generalUser);
+                    GeneralAppDatabase.getDatabase(getApplicationContext()).generalUserDao().insertUser(generalUser);
                 });
 
                 runOnUiThread(() -> {

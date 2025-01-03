@@ -36,7 +36,7 @@ public class GeneralActivityLogin extends AppCompatActivity {
         setContentView(R.layout.general_activity_login);
 
         generalAppDatabase = GeneralAppDatabase.getDatabase(getApplicationContext());
-        generalUserDao = generalAppDatabase.userDao();
+        generalUserDao = generalAppDatabase.generalUserDao();
 
         usernameEditText = findViewById(R.id.PTLoginUsername);
         passwordEditText = findViewById(R.id.PTLoginPassword);

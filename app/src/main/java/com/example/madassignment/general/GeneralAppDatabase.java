@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 @Database(entities = {GeneralUser.class}, version = 1)
 public abstract class GeneralAppDatabase extends RoomDatabase {
 
-    public abstract GeneralUserDao userDao();
+    public abstract GeneralUserDao generalUserDao();
 
     private static volatile GeneralAppDatabase INSTANCE;
 
