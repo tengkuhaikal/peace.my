@@ -36,12 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".general.GeneralActivityMain"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false">
         </activity>
         <activity
             android:name=".general.GeneralActivityLogin"
@@ -66,7 +61,13 @@
             android:exported="false" />
         <activity
             android:name=".education.EducationActivityMain"
-            android:exported="false"></activity> <!-- Calendar -->
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- Calendar -->
         <activity
             android:name=".calendar.CalendarActivityMedication"
             android:exported="false" />
