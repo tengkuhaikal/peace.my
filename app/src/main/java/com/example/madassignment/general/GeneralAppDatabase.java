@@ -5,10 +5,10 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {GeneralUser.class}, version = 1)
+@Database(entities = {GeneralUser.class}, version = 1, exportSchema = false)
 public abstract class GeneralAppDatabase extends RoomDatabase {
 
-    public abstract GeneralUserDao userDao();
+    public abstract GeneralUserDao generalUserDao();
 
     private static volatile GeneralAppDatabase INSTANCE;
 
@@ -26,4 +26,3 @@ public abstract class GeneralAppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 }
-

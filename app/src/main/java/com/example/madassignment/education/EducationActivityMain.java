@@ -1,6 +1,7 @@
 package com.example.madassignment.education;
 
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,7 +26,7 @@ public class EducationActivityMain extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
 
         // Array of health problem names
-        String[] names = {
+        name = new String[]{
                 getString(R.string.alzheimers_disease),
                 getString(R.string.diabetes),
                 getString(R.string.hypertension),
@@ -44,7 +45,7 @@ public class EducationActivityMain extends AppCompatActivity {
         };
 
         // Array of health problem descriptions
-        String[] descriptions = {
+        description = new String[]{
                 getString(R.string.alzheimers_disease_desc),
                 getString(R.string.diabetes_desc),
                 getString(R.string.hypertension_desc),
@@ -63,7 +64,7 @@ public class EducationActivityMain extends AppCompatActivity {
         };
 
         // Array of health problem symptoms
-        String[] symptoms = {
+        symptoms = new String[]{
                 getString(R.string.alzheimers_disease_symptoms),
                 getString(R.string.diabetes_symptoms),
                 getString(R.string.hypertension_symptoms),
@@ -82,7 +83,7 @@ public class EducationActivityMain extends AppCompatActivity {
         };
 
         // Array of health problem treatments
-        String[] treatments = {
+        treatment = new String[]{
                 getString(R.string.alzheimers_disease_treatment),
                 getString(R.string.diabetes_treatment),
                 getString(R.string.hypertension_treatment),
@@ -101,7 +102,7 @@ public class EducationActivityMain extends AppCompatActivity {
         };
 
         // Array of health problem images
-        int[] images = {
+        image = new int[]{
                 R.drawable.alzheimers_disease,
                 R.drawable.diabetes_mellitus,
                 R.drawable.hypertension,
@@ -119,6 +120,24 @@ public class EducationActivityMain extends AppCompatActivity {
                 R.drawable.covid_19
         };
 
+        icon = new int[] {
+                R.drawable.ic_alzheimer,
+                R.drawable.ic_diabetes,
+                R.drawable.ic_hypertension,
+                R.drawable.ic_asthma,
+                R.drawable.ic_celiac_disease,
+                R.drawable.ic_migraine,
+                R.drawable.ic_osteoporosis,
+                R.drawable.ic_depression,
+                R.drawable.ic_anemia,
+                R.drawable.ic_tuberculosis,
+                R.drawable.ic_dengue,
+                R.drawable.ic_malaria,
+                R.drawable.ic_obesity,
+                R.drawable.ic_hepatitis_b,
+                R.drawable.ic_covid
+        };
+
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -127,7 +146,6 @@ public class EducationActivityMain extends AppCompatActivity {
         recyclerView.setAdapter(educationAdapter);
 
         getDisease();
-
     }
 
     private void getDisease() {

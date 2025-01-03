@@ -25,7 +25,6 @@ public class GeneralUser {
     @NonNull
     private String address;
 
-    @NonNull
     private String address2;
 
     @NonNull
@@ -43,17 +42,18 @@ public class GeneralUser {
     @NonNull
     private String phone;
 
-    public GeneralUser(String username, String password, String firstName, String lastName, String address, String address2, String postcode, String city, String state, String dob, String phone) {
-    }
-
-    // Getters and setters
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public GeneralUser(@NonNull String username, @NonNull String password, @NonNull String firstName, @NonNull String lastName, @NonNull String address, String address2, @NonNull String postcode, @NonNull String city, @NonNull String state, @NonNull String dob, @NonNull String phone) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.address2 = address2;
+        this.postcode = postcode;
+        this.city = city;
+        this.state = state;
+        this.dob = dob;
+        this.phone = phone;
     }
 
     @NonNull
@@ -101,12 +101,11 @@ public class GeneralUser {
         this.address = address;
     }
 
-    @NonNull
     public String getAddress2() {
         return address2;
     }
 
-    public void setAddress2(@NonNull String address2) {
+    public void setAddress2(String address2) {
         this.address2 = address2;
     }
 
@@ -153,5 +152,13 @@ public class GeneralUser {
 
     public void setPhone(@NonNull String phone) {
         this.phone = phone;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

@@ -57,10 +57,10 @@ public class GeneralActivityResetPassword extends AppCompatActivity {
                 return false;
             }
 
-            GeneralUser generalUser = GeneralAppDatabase.getDatabase(GeneralActivityResetPassword.this).userDao().getUserByUsername(username);
+            GeneralUser generalUser = GeneralAppDatabase.getDatabase(GeneralActivityResetPassword.this).generalUserDao().getUserByUsername(username);
             if (generalUser != null) {
                 // Update the user's password
-                GeneralAppDatabase.getDatabase(GeneralActivityResetPassword.this).userDao().updateUserPassword(username, newPassword);
+                GeneralAppDatabase.getDatabase(GeneralActivityResetPassword.this).generalUserDao().updateUserPassword(username, newPassword);
                 return true;
             }
 

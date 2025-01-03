@@ -19,7 +19,7 @@ import java.util.List;
 
 public class GeneralActivitySearch extends GeneralBaseActivity {
 
-    private GeneralAppDatabase database;
+    private static GeneralAppDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class GeneralActivitySearch extends GeneralBaseActivity {
 
             @Override
             protected List<GeneralUser> doInBackground(String... strings) {
-                List<GeneralUser> results = database.userDao().searchUsers("%" + strings[0] + "%");
+                List<GeneralUser> results = database.generalUserDao().searchUsers("%" + strings[0] + "%");
                 return results;
             }
 

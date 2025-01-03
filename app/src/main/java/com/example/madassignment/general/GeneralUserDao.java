@@ -9,7 +9,7 @@ import java.util.List;
 public interface GeneralUserDao {
 
     @Insert
-    void insertUser(GeneralUser generalUser);
+    void insertUser(GeneralUser user);
 
     @Query("SELECT * FROM users WHERE username = :username AND password = :password LIMIT 1")
     GeneralUser authenticateUser(String username, String password);

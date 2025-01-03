@@ -3,6 +3,7 @@ package com.example.madassignment.general;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,7 +35,7 @@ public class GeneralActivitySignUp extends AppCompatActivity {
         Button cancelButton = findViewById(R.id.BtnSignUpCancel);
 
         cancelButton.setOnClickListener(v -> {
-            startActivity(new Intent(GeneralActivitySignUp.this, GeneralActivityLogin.class));
+            startActivity(new Intent(this, GeneralActivityLogin.class));
             finish();
         });
 
@@ -49,7 +50,7 @@ public class GeneralActivitySignUp extends AppCompatActivity {
                     !password.isEmpty() && password.equals(confirmPassword)) {
                 showStepTwo(firstName, lastName, username, password);
             } else {
-                Toast.makeText(GeneralActivitySignUp.this, "Please fill all fields and ensure passwords match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please fill all fields and ensure passwords match", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -78,14 +79,14 @@ public class GeneralActivitySignUp extends AppCompatActivity {
             int month = calendar.get(Calendar.MONTH);
             int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-            new DatePickerDialog(GeneralActivitySignUp.this, (view, selectedYear, selectedMonth, selectedDay) -> {
+            new DatePickerDialog(this, (view, selectedYear, selectedMonth, selectedDay) -> {
                 String formattedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
                 dobTextView.setText(formattedDate);
             }, year, month, day).show();
         });
 
         cancelButton.setOnClickListener(v -> {
-            startActivity(new Intent(GeneralActivitySignUp.this, GeneralActivityLogin.class));
+            startActivity(new Intent(this, GeneralActivityLogin.class));
             finish();
         });
 
@@ -101,17 +102,22 @@ public class GeneralActivitySignUp extends AppCompatActivity {
             if (!address.isEmpty() && !postcode.isEmpty() && !city.isEmpty() &&
                     !state.equals("Select State") && !dob.isEmpty() && !phone.isEmpty()) {
                 executorService.execute(() -> {
-                    GeneralUser generalUser = new GeneralUser(username, password, firstName, lastName, address, address2, postcode, city, state, dob, phone);
-                    GeneralAppDatabase.getDatabase(getApplicationContext()).userDao().insertUser(generalUser);
+                    try {
+                        GeneralUser user = new GeneralUser(username, password, firstName, lastName, address, address2, postcode, city, state, dob, phone);
+                        GeneralAppDatabase.getDatabase(getApplicationContext()).generalUserDao().insertUser(user);
+                        Log.d("SignUpActivity", "User inserted successfully: " + username);
+                    } catch (Exception e) {
+                        Log.e("SignUpActivity", "Error inserting user: ", e);
+                    }
                 });
 
                 runOnUiThread(() -> {
-                    Toast.makeText(GeneralActivitySignUp.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(GeneralActivitySignUp.this, GeneralActivityLogin.class));
+                    Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, GeneralActivityLogin.class));
                     finish();
                 });
             } else {
-                Toast.makeText(GeneralActivitySignUp.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             }
         });
     }
