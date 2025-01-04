@@ -1,24 +1,20 @@
 package com.example.madassignment.general;
 
-import android.app.DatePickerDialog;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madassignment.R;
+import com.google.android.material.snackbar.Snackbar;
 
-import java.util.Calendar;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -58,10 +54,10 @@ public class GeneralActivityLogin extends AppCompatActivity {
         visibilityButton.setOnClickListener(v -> {
             isPasswordVisible = !isPasswordVisible;
             if (isPasswordVisible) {
-                passwordEditText.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                passwordEditText.setTransformationMethod(null); // Show password
                 visibilityButton.setImageResource(R.drawable.visibility_on);
             } else {
-                passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                passwordEditText.setTransformationMethod(new PasswordTransformationMethod()); // Hide password
                 visibilityButton.setImageResource(R.drawable.visibility_off);
             }
             passwordEditText.setSelection(passwordEditText.getText().length());
@@ -73,7 +69,7 @@ public class GeneralActivityLogin extends AppCompatActivity {
             String password = passwordEditText.getText().toString().trim();
 
             if (username.isEmpty() || password.isEmpty()) {
-                Toast.makeText(GeneralActivityLogin.this, "Please enter username and password", Toast.LENGTH_SHORT).show();
+                Snackbar.make(loginButton, "Please enter username and password", Snackbar.LENGTH_SHORT).show();
                 return;
             }
 
@@ -83,10 +79,10 @@ public class GeneralActivityLogin extends AppCompatActivity {
         // Cancel button
         cancelButton.setOnClickListener(v -> {
             new AlertDialog.Builder(this)
-                    .setTitle("Exit Application")
-                    .setMessage("Are you sure you want to exit?")
-                    .setPositiveButton("Yes", (dialog, which) -> finishAffinity())
-                    .setNegativeButton("No", null)
+                    .setTitle("Confirm Exit")
+                    .setMessage("Are you sure you want to close the application?")
+                    .setPositiveButton("Exit", (dialog, which) -> finishAffinity())
+                    .setNegativeButton("Cancel", null)
                     .show();
         });
 
@@ -112,12 +108,10 @@ public class GeneralActivityLogin extends AppCompatActivity {
                     // User authenticated successfully, navigate to home page
                     Intent intent = new Intent(GeneralActivityLogin.this, GeneralActivityHome.class);
                     startActivity(intent);
-                    finish(); // Close the login activity
+                    finish();
                 } else {
-                    // Invalid credentials, show an error toast
-                    Toast.makeText(GeneralActivityLogin.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
-                    usernameEditText.getText().clear();
-                    passwordEditText.getText().clear();
+                    // Invalid credentials
+                    Snackbar.make(loginButton, "Invalid username or password", Snackbar.LENGTH_SHORT).show();
                 }
             });
         });

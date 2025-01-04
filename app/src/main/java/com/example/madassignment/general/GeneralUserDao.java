@@ -3,6 +3,7 @@ package com.example.madassignment.general;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+
 import java.util.List;
 
 @Dao
@@ -20,6 +21,6 @@ public interface GeneralUserDao {
     @Query("UPDATE users SET password = :newPassword WHERE username = :username")
     void updateUserPassword(String username, String newPassword);
 
-    @Query("SELECT * FROM users WHERE username LIKE :query OR firstName LIKE :query OR lastName LIKE :query")
+    @Query("SELECT * FROM users WHERE username LIKE '%' || :query || '%' OR firstName LIKE '%' || :query || '%' OR lastName LIKE '%' || :query || '%'")
     List<GeneralUser> searchUsers(String query);
 }

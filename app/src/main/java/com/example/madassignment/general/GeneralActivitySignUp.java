@@ -3,13 +3,16 @@ package com.example.madassignment.general;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.madassignment.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -46,11 +49,13 @@ public class GeneralActivitySignUp extends AppCompatActivity {
             String password = passwordEditText.getText().toString();
             String confirmPassword = confirmPasswordEditText.getText().toString();
 
-            if (!firstName.isEmpty() && !lastName.isEmpty() && !username.isEmpty() &&
-                    !password.isEmpty() && password.equals(confirmPassword)) {
-                showStepTwo(firstName, lastName, username, password);
+            if (TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) ||
+                    TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
+                Toast.makeText(GeneralActivitySignUp.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            } else if (!password.equals(confirmPassword)) {
+                Toast.makeText(GeneralActivitySignUp.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(GeneralActivitySignUp.this, "Please fill all fields and ensure passwords match", Toast.LENGTH_SHORT).show();
+                showStepTwo(firstName, lastName, username, password);
             }
         });
     }
@@ -80,10 +85,12 @@ public class GeneralActivitySignUp extends AppCompatActivity {
             int day = calendar.get(Calendar.DAY_OF_MONTH);
 
             new DatePickerDialog(GeneralActivitySignUp.this, (view, selectedYear, selectedMonth, selectedDay) -> {
-                String formattedDate = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                String formattedDate = dateFormat.format(new java.util.Date(selectedYear - 1900, selectedMonth, selectedDay));
                 dobTextView.setText(formattedDate);
             }, year, month, day).show();
         });
+
 
         cancelButton.setOnClickListener(v -> {
             startActivity(new Intent(GeneralActivitySignUp.this, GeneralActivityLogin.class));
@@ -99,8 +106,12 @@ public class GeneralActivitySignUp extends AppCompatActivity {
             String dob = dobTextView.getText().toString();
             String phone = phoneEditText.getText().toString();
 
-            if (!address.isEmpty() && !postcode.isEmpty() && !city.isEmpty() &&
-                    !state.equals("Select State") && !dob.isEmpty() && !phone.isEmpty()) {
+            if (TextUtils.isEmpty(address) || TextUtils.isEmpty(postcode) || TextUtils.isEmpty(city) ||
+                    state.equals("Select State") || TextUtils.isEmpty(dob) || TextUtils.isEmpty(phone)) {
+                Toast.makeText(GeneralActivitySignUp.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            } else if (!isValidPhoneNumber(phone)) {
+                Toast.makeText(GeneralActivitySignUp.this, "Invalid phone number format", Toast.LENGTH_SHORT).show();
+            } else {
                 executorService.execute(() -> {
                     try {
                         GeneralUser user = new GeneralUser(username, password, firstName, lastName, address, address2, postcode, city, state, dob, phone);
@@ -116,9 +127,11 @@ public class GeneralActivitySignUp extends AppCompatActivity {
                     startActivity(new Intent(GeneralActivitySignUp.this, GeneralActivityLogin.class));
                     finish();
                 });
-            } else {
-                Toast.makeText(GeneralActivitySignUp.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private boolean isValidPhoneNumber(String phone) {
+        return phone.matches("\\d{10}"); // Basic check for a 10-digit phone number
     }
 }
