@@ -15,6 +15,7 @@
         <activity
             android:name=".symptom.SymptomTrackingMainActivity"
             android:exported="false" />
+
         <!-- General -->
         <activity
             android:name=".general.GeneralActivitySignUp"
@@ -36,8 +37,7 @@
             android:exported="false" />
         <activity
             android:name=".general.GeneralActivityMain"
-            android:exported="false">
-        </activity>
+            android:exported="false"/>
         <activity
             android:name=".general.GeneralActivityLogin"
             android:exported="false" />
@@ -46,7 +46,12 @@
             android:exported="false" />
         <activity
             android:name=".general.GeneralActivityForgotPassword"
-            android:exported="false" /> <!-- Medication -->
+            android:exported="false" />
+        <activity
+            android:name=".general.GeneralBaseActivity"
+            android:exported="false" />
+
+        <!-- Medication -->
         <activity
             android:name=".medication.MedicationActivityReminder"
             android:exported="false" />
@@ -55,7 +60,9 @@
             android:exported="false" />
         <activity
             android:name=".medication.MedicationActivityChooseMedication"
-            android:exported="false" /> <!-- Education -->
+            android:exported="false" />
+
+        <!-- Education -->
         <activity
             android:name=".education.EducationActivityDetailed"
             android:exported="false">
@@ -77,7 +84,9 @@
             android:exported="false" />
         <activity
             android:name=".calendar.CalendarActivityAppointment"
-            android:exported="false" /> <!-- Appointment -->
+            android:exported="false" />
+
+        <!-- Appointment -->
         <activity
             android:name=".appointment.AppointmentActivityMain"
             android:exported="false" />

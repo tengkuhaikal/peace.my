@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -102,6 +103,9 @@ public class GeneralActivityLogin extends AppCompatActivity {
     private void authenticateUser(String username, String password) {
         executorService.execute(() -> {
             GeneralUser user = userDao.authenticateUser(username, password);
+
+            Log.d("Login", "Checking user: " + username);
+            Log.d("Login", "Authenticated user: " + (user != null ? user.getUsername() : "No user found"));
 
             runOnUiThread(() -> {
                 if (user != null) {

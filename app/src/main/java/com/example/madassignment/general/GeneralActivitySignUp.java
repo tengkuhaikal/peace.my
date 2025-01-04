@@ -7,9 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.madassignment.R;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -91,7 +89,6 @@ public class GeneralActivitySignUp extends AppCompatActivity {
             }, year, month, day).show();
         });
 
-
         cancelButton.setOnClickListener(v -> {
             startActivity(new Intent(GeneralActivitySignUp.this, GeneralActivityLogin.class));
             finish();
@@ -116,9 +113,9 @@ public class GeneralActivitySignUp extends AppCompatActivity {
                     try {
                         GeneralUser user = new GeneralUser(username, password, firstName, lastName, address, address2, postcode, city, state, dob, phone);
                         GeneralAppDatabase.getDatabase(getApplicationContext()).generalUserDao().insertUser(user);
-                        Log.d("SignUpActivity", "User inserted successfully: " + username);
+                        Log.d("SignUpActivity", "User inserted successfully: " + username);  // Log the inserted username
                     } catch (Exception e) {
-                        Log.e("SignUpActivity", "Error inserting user: ", e);
+                        Log.e("SignUpActivity", "Error inserting user: ", e);  // Log any error
                     }
                 });
 
