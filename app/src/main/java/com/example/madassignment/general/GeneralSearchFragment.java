@@ -8,35 +8,44 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
-
 import com.example.madassignment.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GeneralActivitySearch extends GeneralBaseActivity {
+public class GeneralSearchFragment extends Fragment {
 
     private GeneralAppDatabase database;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.general_activity_search);
-
-        database = Room.databaseBuilder(getApplicationContext(), GeneralAppDatabase.class, "app-database").build();
+    public GeneralSearchFragment() {
 
     }
 
-    private void setupSearchComponents() {
-        AutoCompleteTextView searchBox = findViewById(R.id.AutoCompleteSearch);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.general_activity_search, container, false);
+
+
+        database = Room.databaseBuilder(getContext(), GeneralAppDatabase.class, "app-database").build();
+
+
+        setupSearchComponents(rootView);
+
+        return rootView;
+    }
+
+    private void setupSearchComponents(View rootView) {
+        AutoCompleteTextView searchBox = rootView.findViewById(R.id.AutoCompleteSearch);
         List<String> searchSuggestions = new ArrayList<>();
         searchSuggestions.add("Suggestion 1");
         searchSuggestions.add("Suggestion 2");
         searchSuggestions.add("Suggestion 3");
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, searchSuggestions);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_dropdown_item_1line, searchSuggestions);
         searchBox.setAdapter(adapter);
 
         searchBox.setOnItemClickListener((parent, view, position, id) -> {
@@ -46,15 +55,15 @@ public class GeneralActivitySearch extends GeneralBaseActivity {
             }
         });
 
-        TextView noResultsTextView = findViewById(R.id.TVNoSearchResults);
-        RecyclerView recyclerView = findViewById(R.id.RVSearchResults);
+        TextView noResultsTextView = rootView.findViewById(R.id.TVNoSearchResults);
+        RecyclerView recyclerView = rootView.findViewById(R.id.RVSearchResults);
 
         noResultsTextView.setVisibility(View.GONE);
         recyclerView.setVisibility(View.GONE);
     }
 
     private void setupRecyclerView(RecyclerView recyclerView, List<String> searchResults) {
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new GeneralSearchResultsAdapter(searchResults));
     }
 
@@ -76,8 +85,11 @@ public class GeneralActivitySearch extends GeneralBaseActivity {
     }
 
     private void updateSearchResults(List<GeneralUser> results) {
-        TextView noResultsTextView = findViewById(R.id.TVNoSearchResults);
-        RecyclerView recyclerView = findViewById(R.id.RVSearchResults);
+        View rootView = getView();
+        if (rootView == null) return;
+
+        TextView noResultsTextView = rootView.findViewById(R.id.TVNoSearchResults);
+        RecyclerView recyclerView = rootView.findViewById(R.id.RVSearchResults);
 
         if (results.isEmpty()) {
             noResultsTextView.setVisibility(View.VISIBLE);
@@ -94,11 +106,11 @@ public class GeneralActivitySearch extends GeneralBaseActivity {
     }
 }
 
-class GeneralSearchResultsAdapter extends RecyclerView.Adapter<GeneralSearchResultsAdapter.ViewHolder> {
+class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdapter.ViewHolder> {
 
     private List<String> results;
 
-    public GeneralSearchResultsAdapter(List<String> results) {
+    public SearchResultsAdapter(List<String> results) {
         this.results = results;
     }
 

@@ -109,8 +109,9 @@ public class GeneralActivityLogin extends AppCompatActivity {
 
             runOnUiThread(() -> {
                 if (user != null) {
-                    // User authenticated successfully, navigate to home page
-                    Intent intent = new Intent(GeneralActivityLogin.this, GeneralActivityHome.class);
+                    // User authenticated successfully, navigate to GeneralBaseActivity
+                    Intent intent = new Intent(GeneralActivityLogin.this, GeneralBaseActivity.class);
+                    intent.putExtra("active_page", "home"); // Set the initial page as "home"
                     startActivity(intent);
                     finish();
                 } else {
@@ -120,7 +121,7 @@ public class GeneralActivityLogin extends AppCompatActivity {
             });
         });
     }
-
+    
     @Override
     protected void onDestroy() {
         super.onDestroy();

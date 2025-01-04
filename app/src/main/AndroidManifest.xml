@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MADAssignment"
         tools:targetApi="31">
+
+        <!-- Symptom Tracking -->
         <activity
             android:name=".symptom.SymptomTrackingMainActivity"
             android:exported="false" />
@@ -37,7 +39,12 @@
             android:exported="false" />
         <activity
             android:name=".general.GeneralActivityMain"
-            android:exported="false"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".general.GeneralActivityLogin"
             android:exported="false" />
@@ -65,17 +72,12 @@
         <!-- Education -->
         <activity
             android:name=".education.EducationActivityDetailed"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".education.EducationActivityMain"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- Calendar -->
+        <!-- Calendar -->
         <activity
             android:name=".calendar.CalendarActivityMedication"
             android:exported="false" />
