@@ -12,11 +12,13 @@
         android:layout_height="69dp"
         android:layout_marginStart="75dp"
         android:layout_marginEnd="75dp"
+        android:layout_marginBottom="1dp"
         android:fontFamily="@font/poppins_extrabold"
         android:text="peace.my"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/TVPeaceHealthHarmony"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IVLogo" />
@@ -26,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="71dp"
         android:layout_marginBottom="257dp"
         android:fontFamily="@font/poppins_semibold"
@@ -34,7 +37,8 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVPeaceMy" />
 
     <ImageView
         android:id="@+id/IVLogo"
@@ -43,6 +47,7 @@
         android:layout_marginStart="140dp"
         android:layout_marginTop="237dp"
         android:layout_marginEnd="140dp"
+        app:layout_constraintBottom_toTopOf="@+id/TVPeaceMy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

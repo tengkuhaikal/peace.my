@@ -15,13 +15,10 @@ public class GeneralActivityMain extends AppCompatActivity {
 
         setContentView(R.layout.general_start_up);
 
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(GeneralActivityMain.this, GeneralActivityLogin.class);
-                startActivity(intent);
-                finish();
-            }
-        }, 5000);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            Intent intent = new Intent(GeneralActivityMain.this, GeneralActivityLogin.class);
+            startActivity(intent);
+            finish();
+        }, 3000);
     }
 }

@@ -3,6 +3,7 @@ package com.example.madassignment.general;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -101,8 +102,13 @@ public class GeneralActivitySignUp extends AppCompatActivity {
             if (!address.isEmpty() && !postcode.isEmpty() && !city.isEmpty() &&
                     !state.equals("Select State") && !dob.isEmpty() && !phone.isEmpty()) {
                 executorService.execute(() -> {
-                    GeneralUser generalUser = new GeneralUser(username, password, firstName, lastName, address, address2, postcode, city, state, dob, phone);
-                    GeneralAppDatabase.getDatabase(getApplicationContext()).generalUserDao().insertUser(generalUser);
+                    try {
+                        GeneralUser user = new GeneralUser(username, password, firstName, lastName, address, address2, postcode, city, state, dob, phone);
+                        GeneralAppDatabase.getDatabase(getApplicationContext()).generalUserDao().insertUser(user);
+                        Log.d("SignUpActivity", "User inserted successfully: " + username);
+                    } catch (Exception e) {
+                        Log.e("SignUpActivity", "Error inserting user: ", e);
+                    }
                 });
 
                 runOnUiThread(() -> {
