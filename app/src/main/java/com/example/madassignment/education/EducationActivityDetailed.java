@@ -1,48 +1,34 @@
 package com.example.madassignment.education;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.ImageView;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.example.madassignment.R;
-import com.example.madassignment.databinding.EducationActivityDetailedBinding;
 
 public class EducationActivityDetailed extends AppCompatActivity {
-
-    EducationActivityDetailedBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = EducationActivityDetailedBinding.inflate(getLayoutInflater());
-        EdgeToEdge.enable(this);
-        setContentView(binding.getRoot());
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        setContentView(R.layout.education_activity_detailed);
 
-        Intent intent = this.getIntent();
+        ImageView imageView = findViewById(R.id.detailedImage);
+        TextView nameTextView = findViewById(R.id.detailedName);
+        TextView descriptionTextView = findViewById(R.id.detailedDescription);
+        TextView symptomsTextView = findViewById(R.id.detailedSymptoms);
+        TextView treatmentTextView = findViewById(R.id.detailedTreatment);
 
-        if (intent != null) {
-            int name = intent.getIntExtra("name", 0);
-            int image = intent.getIntExtra("image", R.drawable.diabetes_mellitus);
-            int desc = intent.getIntExtra("desc", R.string.diabetes_desc);
-            int symptoms = intent.getIntExtra("symptoms", R.string.diabetes_symptoms);
-            int treatment = intent.getIntExtra("treatment", R.string.diabetes_treatment);
+        String name = getIntent().getStringExtra("name");
+        String description = getIntent().getStringExtra("description");
+        String symptoms = getIntent().getStringExtra("symptoms");
+        String treatment = getIntent().getStringExtra("treatmentTV");
+        int image = getIntent().getIntExtra("image", R.drawable.diabetes_mellitus);
 
-            binding.detailedName.setText(name);
-            binding.detailedImage.setImageResource(image);
-            binding.detailedDescription.setText(desc);
-            binding.detailedSymptoms.setText(symptoms);
-            binding.detailedTreatment.setText(treatment);
-
-        }
+        imageView.setImageResource(image);
+        nameTextView.setText(name);
+        descriptionTextView.setText(description);
+        symptomsTextView.setText(symptoms);
+        treatmentTextView.setText(treatment);
     }
 }

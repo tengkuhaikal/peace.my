@@ -58,7 +58,8 @@
             android:exported="false" /> <!-- Education -->
         <activity
             android:name=".education.EducationActivityDetailed"
-            android:exported="false" />
+            android:exported="false">
+        </activity>
         <activity
             android:name=".education.EducationActivityMain"
             android:exported="true">
