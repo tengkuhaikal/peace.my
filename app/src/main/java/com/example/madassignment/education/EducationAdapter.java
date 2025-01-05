@@ -37,21 +37,16 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.Educ
     @Override
     public void onBindViewHolder(@NonNull EducationViewHolder holder, int position) {
         EducationItem currentItem = educationItemList.get(position);
-        holder.imageIV.setImageResource(currentItem.getImage());
         holder.iconIV.setImageResource(currentItem.getIcon());
         holder.nameTV.setText(currentItem.getName());
-        holder.descriptionTV.setText(currentItem.getDescription());
-        holder.symptomsTV.setText(currentItem.getSymptoms());
-        holder.treatmentTV.setText(currentItem.getTreatment());
 
         holder.itemView.setOnClickListener(v-> {
             Intent intent = new Intent(context, EducationActivityDetailed.class);
             intent.putExtra("name", educationItemList.get(position).getName());
-            intent.putExtra("description", educationItemList.get(position).getDescription());
-            intent.putExtra("symptoms", educationItemList.get(position).getSymptoms());
-            intent.putExtra("treatmentTV", educationItemList.get(position).getTreatment());
-            intent.putExtra("image", educationItemList.get(position).getImage());
-            intent.putExtra("icon", educationItemList.get(position).getIcon());
+            intent.putExtra("description", currentItem.getDescription() != null ? currentItem.getDescription() : "");
+            intent.putExtra("symptoms", currentItem.getSymptoms() != null ? currentItem.getSymptoms() : "");
+            intent.putExtra("treatment", currentItem.getTreatment() != null ? currentItem.getTreatment() : "");
+            intent.putExtra("image", currentItem.getImage());
             context.startActivity(intent);
         });
     }
@@ -72,12 +67,8 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.Educ
 
         public EducationViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageIV = itemView.findViewById(R.id.detailedImage);
             iconIV = itemView.findViewById(R.id.icon);
             nameTV = itemView.findViewById(R.id.listName);
-            descriptionTV = itemView.findViewById(R.id.detailedDescription);
-            symptomsTV = itemView.findViewById(R.id.detailedSymptoms);
-            treatmentTV = itemView.findViewById(R.id.detailedTreatment);
         }
     }
 }

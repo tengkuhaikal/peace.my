@@ -22,7 +22,7 @@ public class EducationActivityDetailed extends AppCompatActivity {
         String name = getIntent().getStringExtra("name");
         String description = getIntent().getStringExtra("description");
         String symptoms = getIntent().getStringExtra("symptoms");
-        String treatment = getIntent().getStringExtra("treatmentTV");
+        String treatment = getIntent().getStringExtra("treatment");
         int image = getIntent().getIntExtra("image", R.drawable.diabetes_mellitus);
 
         imageView.setImageResource(image);

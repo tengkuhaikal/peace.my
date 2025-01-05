@@ -1,97 +1,12 @@
 <resources>
 
+    <!-- App Name -->
     <string name="app_name">Peace.MY</string>
 
-    //healthProblem 1: Diabetes Mellitus
-    <string name="diabetes">Diabetes Mellitus</string>
-    <string name="diabetes_desc">A chronic condition that affects how the body processes blood sugar (glucose).</string>
-    <string name="diabetes_symptoms">1. Increased thirst and frequent urination\n2. Extreme hunger\n3. Unexplained weight loss\n4. Fatigue\n5. Blurred vision\n6. Slow healing of wounds</string>
-    <string name="diabetes_treatment">1. Medications: Type 1: Insulin injections; Type 2: Metformin or Sulfonylureas\n2. Lifestyle: Healthy diet, regular exercise, blood sugar monitoring</string>
+    <!-- General Titles -->
+    <string name="title">Symptom Tracker</string>
 
-    //healthProblem 2: Hypertension (High Blood Pressure)
-    <string name="hypertension">Hypertension</string>
-    <string name="hypertension_desc">A condition in which the force of the blood against artery walls is consistently too high.</string>
-    <string name="hypertension_symptoms">1. Headaches\n2. Shortness of breath\n3. Nosebleeds\n4. Fatigue or confusion\n5. Chest pain</string>
-    <string name="hypertension_treatment">1. Medications: ACE inhibitors, Beta-blockers, Diuretics\n2. Lifestyle: Reduce salt intake, exercise regularly, manage stress</string>
-
-    //healthProblem 3: Asthma
-    <string name="asthma">Asthma</string>
-    <string name="asthma_desc">A condition in which the airways narrow and swell, causing difficulty in breathing.</string>
-    <string name="asthma_symptoms">1. Shortness of breath\n2. Wheezing or whistling sound when breathing\n3. Chest tightness\n4. Persistent coughing</string>
-    <string name="asthma_treatment">1. Medications: Inhalers (e.g., Albuterol)\n2. Lifestyle: Avoid allergens, quit smoking, use air purifiers</string>
-
-    //healthProblem 4: Celiac Disease
-    <string name="celiac_disease">Celiac Disease</string>
-    <string name="celiac_disease_desc">An autoimmune disorder where consuming gluten damages the small intestine.</string>
-    <string name="celiac_disease_symptoms">1. Diarrhea\n2. Bloating\n3. Weight loss\n4. Fatigue\n5. Abdominal pain\n6. Nutrient deficiencies</string>
-    <string name="celiac_disease_treatment">1. Lifestyle: Strict gluten-free diet\n2. Supplements: Iron, calcium, or other nutrients as needed</string>
-
-    //healthProblem 5: Migraine
-    <string name="migraine">Migraine</string>
-    <string name="migraine_desc">A neurological condition that causes severe headaches and other symptoms.</string>
-    <string name="migraine_symptoms">1. Severe headache (often on one side)\n2. Sensitivity to light and sound\n3. Nausea or vomiting\n4. Aura (flashing lights or blind spots)</string>
-    <string name="migraine_treatment">1. Medications: Pain relievers (e.g., Ibuprofen), triptans (e.g., Sumatriptan)\n2. Lifestyle: Avoid triggers, maintain consistent sleep and meal schedules</string>
-
-    //healthProblem 6: Osteoporosis
-    <string name="osteoporosis">Osteoporosis</string>
-    <string name="osteoporosis_desc">A condition where bones become weak and brittle, increasing the risk of fractures.</string>
-    <string name="osteoporosis_symptoms">1. Back pain\n2. Loss of height over time\n3. Stooped posture\n4. Bones that break easily</string>
-    <string name="osteoporosis_treatment">1. Medications: Bisphosphonates (e.g., Alendronate)\n2. Lifestyle: Calcium and vitamin D supplements, weight-bearing exercises</string>
-
-    //healthProblem 7: Depression
-    <string name="depression">Depression</string>
-    <string name="depression_desc">A mood disorder causing persistent feelings of sadness and loss of interest.</string>
-    <string name="depression_symptoms">1. Persistent sadness or emptiness\n2. Loss of interest in activities\n3. Changes in appetite or sleep patterns\n4. Fatigue\n5. Difficulty concentrating</string>
-    <string name="depression_treatment">1. Medications: Antidepressants (e.g., SSRIs like Sertraline)\n2. Therapy: Cognitive Behavioral Therapy (CBT)\n3. Lifestyle: Regular exercise, mindfulness, social support</string>
-
-    //healthProblem 8: Anemia
-    <string name="anemia">Anemia</string>
-    <string name="anemia_desc">A condition where the body lacks enough healthy red blood cells to carry oxygen.</string>
-    <string name="anemia_symptoms">1. Fatigue\n2. Weakness\n3. Pale or yellowish skin\n4. Shortness of breath\n5. Dizziness</string>
-    <string name="anemia_treatment">1. Medications: Iron supplements, vitamin B12 injections\n2. Diet: Iron-rich foods (e.g., spinach, red meat)</string>
-
-    //healthProblem 9: Tuberculosis (TB)
-    <string name="tuberculosis">Tuberculosis (TB)</string>
-    <string name="tuberculosis_desc">A contagious bacterial infection that primarily affects the lungs.</string>
-    <string name="tuberculosis_symptoms">1. Persistent cough (lasting more than 3 weeks)\n2. Coughing up blood\n3. Chest pain\n4. Fatigue\n5. Fever and night sweats\n6. Weight loss</string>
-    <string name="tuberculosis_treatment">1. Medications: Rifampin, Isoniazid, Ethambutol\n2. Complete the full course of antibiotics</string>
-
-    //healthProblem 10: Dengue Fever
-    <string name="dengue_fever">Dengue Fever</string>
-    <string name="dengue_fever_desc">A mosquito-borne viral infection causing flu-like symptoms.</string>
-    <string name="dengue_fever_symptoms">1. High fever\n2. Severe headache\n3. Pain behind the eyes\n4. Joint and muscle pain\n5. Rash\n6. Fatigue</string>
-    <string name="dengue_fever_treatment">1. No specific medicine; manage symptoms with rest, fluids, and pain relievers (e.g., Paracetamol)</string>
-
-    //healthProblem 11: Malaria
-    <string name="malaria">Malaria</string>
-    <string name="malaria_desc">A mosquito-borne disease caused by Plasmodium parasites.</string>
-    <string name="malaria_symptoms">1. Fever and chills\n2. Sweats\n3. Headache\n4. Nausea and vomiting\n5. Muscle pain\n6. Fatigue</string>
-    <string name="malaria_treatment">1. Medications: Chloroquine, Artemisinin-based combination therapy (ACT)</string>
-
-    //healthProblem 12: Obesity
-    <string name="obesity">Obesity</string>
-    <string name="obesity_desc">A condition characterized by excessive body fat, increasing the risk of various health problems.</string>
-    <string name="obesity_symptoms">1. High BMI (Body Mass Index)\n2. Fatigue\n3. Difficulty with physical activity\n4. Increased risk of heart disease, diabetes, and joint pain</string>
-    <string name="obesity_treatment">1. Lifestyle: Healthy diet, regular exercise\n2. Medications: Weight-loss drugs (e.g., Orlistat)\n3. Surgery: Bariatric surgery in severe cases</string>
-
-    //healthProblem 13: Hepatitis B
-    <string name="hepatitis_b">Hepatitis B</string>
-    <string name="hepatitis_b_desc">A viral infection that attacks the liver and can cause acute and chronic diseases.</string>
-    <string name="hepatitis_b_symptoms">1. Yellowing of the skin (jaundice)\n2. Dark urine\n3. Fatigue\n4. Abdominal pain\n5. Nausea</string>
-    <string name="hepatitis_b_treatment">1. Medications: Antiviral drugs (e.g., Tenofovir, Entecavir)\n2. Prevention: Vaccination</string>
-
-    //healthProblem 14: COVID-19
-    <string name="covid_19">COVID-19</string>
-    <string name="covid_19_desc">A respiratory illness caused by the SARS-CoV-2 virus.</string>
-    <string name="covid_19_symptoms">1. Fever\n2. Cough\n3. Shortness of breath\n4. Loss of taste or smell\n5. Fatigue</string>
-    <string name="covid_19_treatment">1. Medications: Antivirals (e.g., Remdesivir)\n2. Prevention: Vaccination, mask-wearing, hand hygiene</string>
-
-    //healthProblem 15: Alzheimer's Disease
-    <string name="alzheimers_disease">Alzheimer\'s Disease</string>
-    <string name="alzheimers_disease_desc">A progressive neurological disorder causing memory loss and cognitive decline.</string>
-    <string name="alzheimers_disease_symptoms">1. Memory loss\n2. Confusion\n3. Difficulty completing familiar tasks\n4. Mood changes\n5. Difficulty speaking or writing</string>
-    <string name="alzheimers_disease_treatment">1. Medications: Donepezil, Memantine\n2. Lifestyle: Cognitive therapy, supportive care</string>
-
+    <!-- States List -->
     <string-array name="states_array">
         <item>State</item>
         <item>Johor</item>
@@ -112,5 +27,283 @@
         <item>WP Putrajaya</item>
     </string-array>
 
-    <string name="title">Symptom Tracker</string>
+    <!-- Health Problems -->
+
+    <!-- Diabetes Mellitus -->
+    <string name="diabetes">Diabetes Mellitus</string>
+    <string name="diabetes_desc">A chronic condition that affects how the body processes blood sugar (glucose).</string>
+    <string name="diabetes_symptoms">
+        1. Increased thirst and frequent urination
+        \n2. Extreme hunger
+        \n3. Unexplained weight loss
+        \n4. Fatigue
+        \n5. Blurred vision
+        \n6. Slow healing of wounds
+    </string>
+    <string name="diabetes_treatment">
+        1. Medication:
+            \n\t- Type 1: Insulin injections
+            \n\t- Type 2: Metformin or Sulfonylureas
+        \n2. Lifestyle:
+            \n\t- Healthy diet
+            \n\t- Regular exercise
+            \n\t- Blood sugar monitoring
+    </string>
+
+    <!-- Hypertension -->
+    <string name="hypertension">Hypertension</string>
+    <string name="hypertension_desc">A condition in which the force of the blood against artery walls is consistently too high.</string>
+    <string name="hypertension_symptoms">
+        1. Headaches
+        \n2. Shortness of breath
+        \n3. Nosebleeds
+        \n4. Fatigue or confusion
+        \n5. Chest pain
+    </string>
+    <string name="hypertension_treatment">
+        1. Medication:
+            \n\t- ACE inhibitors
+            \n\t- Beta-blockers
+            \n\t- Diuretics
+        \n2. Lifestyle:
+            \n\t- Reduce salt intake
+            \n\t- Exercise regularly
+            \n\t- Manage stress
+    </string>
+
+    <!-- Asthma -->
+    <string name="asthma">Asthma</string>
+    <string name="asthma_desc">A condition in which the airways narrow and swell, causing difficulty in breathing.</string>
+    <string name="asthma_symptoms">
+        1. Shortness of breath
+        \n2. Wheezing or whistling sound when breathing
+        \n3. Chest tightness
+        \n4. Persistent coughing
+    </string>
+    <string name="asthma_treatment">
+        1. Medication:
+            \n\t- Inhalers (e.g., Albuterol)
+        \n2. Lifestyle:
+            \n\t- Avoid allergens
+            \n\t- Quit smoking
+            \n\t- Use air purifiers
+    </string>
+
+    <!-- Celiac Disease -->
+    <string name="celiac_disease">Celiac Disease</string>
+    <string name="celiac_disease_desc">An autoimmune disorder where consuming gluten damages the small intestine.</string>
+    <string name="celiac_disease_symptoms">
+        1. Diarrhea
+        \n2. Bloating
+        \n3. Weight loss
+        \n4. Fatigue
+        \n5. Abdominal pain
+        \n6. Nutrient deficiencies
+    </string>
+    <string name="celiac_disease_treatment">
+        1. Lifestyle:
+            \n\t- Strict gluten-free diet
+        \n2. Supplements:
+            \n\t- Iron
+            \n\t- Calcium
+            \n\t- Other nutrients as needed
+    </string>
+
+    <!-- Migraine -->
+    <string name="migraine">Migraine</string>
+    <string name="migraine_desc">A neurological condition that causes severe headaches and other symptoms.</string>
+    <string name="migraine_symptoms">
+        1. Severe headache (often on one side)
+        \n2. Sensitivity to light and sound
+        \n3. Nausea or vomiting
+        \n4. Aura (flashing lights or blind spots)
+    </string>
+    <string name="migraine_treatment">
+        1. Medication:
+            \n\t- Pain relievers (e.g., Ibuprofen)
+            \n\t- Triptans (e.g., Sumatriptan)
+        \n2. Lifestyle:
+            \n\t- Avoid triggers
+            \n\t- Maintain consistent sleep and meal schedules
+    </string>
+
+    <!-- Osteoporosis -->
+    <string name="osteoporosis">Osteoporosis</string>
+    <string name="osteoporosis_desc">A condition where bones become weak and brittle, increasing the risk of fractures.</string>
+    <string name="osteoporosis_symptoms">
+        \n1. Back pain
+        \n2. Loss of height over time
+        \n3. Stooped posture
+        \n4. Bones that break easily
+    </string>
+    <string name="osteoporosis_treatment">
+        1. Medication:
+            \n\t- Bisphosphonates (e.g., Alendronate)
+        \n2. Lifestyle:
+            \n\t- Calcium and vitamin D supplements
+            \n\t- Weight-bearing exercises
+    </string>
+
+    <!-- Depression -->
+    <string name="depression">Depression</string>
+    <string name="depression_desc">A mood disorder causing persistent feelings of sadness and loss of interest.</string>
+    <string name="depression_symptoms">
+        1. Persistent sadness or emptiness
+        \n2. Loss of interest in activities
+        \n3. Changes in appetite or sleep patterns
+        \n4. Fatigue
+        \n5. Difficulty concentrating
+    </string>
+    <string name="depression_treatment">
+        1. Medication:
+            \n\t- Antidepressants (e.g., SSRIs like Sertraline)
+        \n2. Therapy:
+            \n\t- Cognitive Behavioral Therapy (CBT)
+        \n\t3. Lifestyle:
+            \n\t- Regular exercise
+            \n\t- Mindfulness
+            \n\t- Social support
+    </string>
+
+    <!-- Tuberculosis (TB) -->
+    <string name="tuberculosis">Tuberculosis (TB)</string>
+    <string name="tuberculosis_desc">A contagious bacterial infection that primarily affects the lungs.</string>
+    <string name="tuberculosis_symptoms">
+        \n1. Persistent cough (lasting more than 3 weeks)
+        \n2. Coughing up blood
+        \n3. Chest pain
+        \n4. Fatigue
+        \n5. Fever and night sweats
+        \n6. Weight loss
+    </string>
+    <string name="tuberculosis_treatment">
+        1. Medication:
+            \n\t- Rifampin
+            \n\t- Isoniazid
+            \n\t- Ethambutol
+        \n2. Recommendation:
+            \n\t- Complete the full course of antibiotics
+    </string>
+
+    <!-- Health Problem 10: Dengue Fever -->
+    <string name="dengue_fever">Dengue Fever</string>
+    <string name="dengue_fever_desc">A mosquito-borne viral infection causing flu-like symptoms.</string>
+    <string name="dengue_fever_symptoms">
+        \n1. High fever
+        \n2. Severe headache
+        \n3. Pain behind the eyes
+        \n4. Joint and muscle pain
+        \n5. Rash
+        \n6. Fatigue
+    </string>
+    <string name="dengue_fever_treatment">
+        1. No specific medicine
+        \n\t-Manage symptoms with rest, fluids, and pain relievers (e.g., Paracetamol)
+    </string>
+
+    <!-- Health Problem 11: Malaria -->
+    <string name="malaria">Malaria</string>
+    <string name="malaria_desc">A mosquito-borne disease caused by Plasmodium parasites.</string>
+    <string name="malaria_symptoms">
+        \n1. Fever and chills
+        \n2. Sweats
+        \n3. Headache
+        \n4. Nausea and vomiting
+        \n5. Muscle pain
+        \n6. Fatigue
+    </string>
+    <string name="malaria_treatment">
+        1. Medications:
+        \n\t-Chloroquine
+        \n\t-Artemisinin-based combination therapy (ACT)
+    </string>
+
+    <!-- Health Problem 12: Obesity -->
+    <string name="obesity">Obesity</string>
+    <string name="obesity_desc">A condition characterized by excessive body fat, increasing the risk of various health problems.</string>
+    <string name="obesity_symptoms">
+        \n1. High BMI (Body Mass Index)
+        \n2. Fatigue
+        \n3. Difficulty with physical activity
+        \n4. Increased risk of heart disease, diabetes, and joint pain
+    </string>
+    <string name="obesity_treatment">
+        1. Lifestyle: Healthy diet, regular exercise
+        \n2. Medications: \n\t-Weight-loss drugs (e.g., Orlistat)
+        \n3. Surgery: \n\t-Bariatric surgery in severe cases
+    </string>
+
+    <!-- Health Problem 13: Hepatitis B -->
+    <string name="hepatitis_b">Hepatitis B</string>
+    <string name="hepatitis_b_desc">A viral infection that attacks the liver and can cause acute and chronic diseases.</string>
+    <string name="hepatitis_b_symptoms">
+        \n1. Yellowing of the skin (jaundice)
+        \n2. Dark urine
+        \n3. Fatigue
+        \n4. Abdominal pain
+        \n5. Nausea
+    </string>
+    <string name="hepatitis_b_treatment">
+        1. Medications:
+        \n\t-Antiviral drugs (e.g., Tenofovir, Entecavir)
+        \n2. Prevention:
+        \n\tVaccination
+    </string>
+
+    <!-- Health Problem 14: COVID-19 -->
+    <string name="covid_19">COVID-19</string>
+    <string name="covid_19_desc">A respiratory illness caused by the SARS-CoV-2 virus.</string>
+    <string name="covid_19_symptoms">
+        \n1. Fever
+        \n2. Cough
+        \n3. Shortness of breath
+        \n4. Loss of taste or smell
+        \n5. Fatigue
+    </string>
+    <string name="covid_19_treatment">
+        1. Medications:
+        \n\t-Antivirals (e.g., Remdesivir)
+        \n2. Prevention:
+        \n\t-Vaccination
+        \n\t-Mask-wearing
+        \n\tHand hygiene
+    </string>
+
+    <!-- Health Problem 15: Alzheimer's Disease -->
+    <string name="alzheimers_disease">Alzheimer\'s Disease</string>
+    <string name="alzheimers_disease_desc">A progressive neurological disorder causing memory loss and cognitive decline.</string>
+    <string name="alzheimers_disease_symptoms">
+        1. Memory loss
+        \n2. Confusion
+        \n3. Difficulty completing familiar tasks
+        \n4. Mood changes
+        \n5. Difficulty speaking or writing
+    </string>
+    <string name="alzheimers_disease_treatment">
+        1. Medications:
+        \n\t-Donepezil
+        \n\t-Memantine
+        \n2. Lifestyle:
+        \n\t-Cognitive therapy
+        \n\t-Supportive care
+    </string>
+
+    //healthProblem 8: Anemia
+    <string name="anemia">Anemia</string>
+    <string name="anemia_desc">A condition where the body lacks enough healthy red blood cells to carry oxygen.</string>
+    <string name="anemia_symptoms">
+        1. Fatigue
+        \n2. Weakness
+        \n3. Pale or yellowish skin
+        \n4. Shortness of breath
+        \n5. Dizziness
+    </string>
+    <string name="anemia_treatment">
+        1. Medications:
+            \n\t-Iron supplements
+            \n\t-vitamin B12 injections
+        \n2. Diet:
+            \n\t-Iron-rich foods (e.g., spinach, red meat)
+    </string>
+
 </resources>
