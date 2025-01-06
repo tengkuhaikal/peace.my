@@ -75,8 +75,7 @@
             android:exported="false" />
         <activity
             android:name=".education.EducationActivityMain"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
 
         <!-- Calendar -->
         <activity

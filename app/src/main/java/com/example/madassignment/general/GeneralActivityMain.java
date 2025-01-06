@@ -19,6 +19,6 @@ public class GeneralActivityMain extends AppCompatActivity {
             Intent intent = new Intent(GeneralActivityMain.this, GeneralActivityLogin.class);
             startActivity(intent);
             finish();
-        }, 3000);
+        }, 2000);
     }
 }

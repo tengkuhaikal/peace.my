@@ -1,9 +1,10 @@
 package com.example.madassignment.general;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.widget.Button;
@@ -109,6 +110,12 @@ public class GeneralActivityLogin extends AppCompatActivity {
 
             runOnUiThread(() -> {
                 if (user != null) {
+                    // Save username
+                    SharedPreferences sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("username", username);
+                    editor.apply();
+
                     // User authenticated successfully, navigate to GeneralBaseActivity
                     Intent intent = new Intent(GeneralActivityLogin.this, GeneralBaseActivity.class);
                     intent.putExtra("active_page", "home"); // Set the initial page as "home"
@@ -121,7 +128,7 @@ public class GeneralActivityLogin extends AppCompatActivity {
             });
         });
     }
-    
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
