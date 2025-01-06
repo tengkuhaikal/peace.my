@@ -122,6 +122,16 @@
             android:textSize="15sp"
             android:layout_marginBottom="8dp" />
 
+        <EditText
+            android:id="@+id/timeTaken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Time taken (e.g. morning)"
+            android:background="@drawable/edit_text_background"
+            android:padding="15dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="8dp" />
+
         <!-- Set Button to save data-->
         <Button
             android:id="@+id/setButton"
