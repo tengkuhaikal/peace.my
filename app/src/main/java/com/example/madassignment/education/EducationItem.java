@@ -1,11 +1,20 @@
 package com.example.madassignment.education;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "education_items")
 public class EducationItem {
+    @PrimaryKey
+    @NonNull
     String name;
+    @NonNull
     int image, icon;
+    @NonNull
     String description, symptoms, treatment;
 
-    public EducationItem(String name, int image, String description, String symptoms, String treatment, int icon) {
+    public EducationItem(@NonNull String name, @NonNull int image, @NonNull String description, @NonNull String symptoms, @NonNull String treatment, @NonNull int icon) {
         this.name = name;
         this.image = image;
         this.description = description;
@@ -17,51 +26,31 @@ public class EducationItem {
     public EducationItem() {
     }
 
+    @NonNull
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getImage() {
         return image;
     }
 
-    public void setImage(int image) {
-        this.image = image;
-    }
-
     public int getIcon() {
         return icon;
     }
 
-    public void setIcon(int icon) {
-        this.icon = icon;
-    }
-
+    @NonNull
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
+    @NonNull
     public String getSymptoms() {
         return symptoms;
     }
 
-    public void setSymptoms(String symptoms) {
-        this.symptoms = symptoms;
-    }
-
+    @NonNull
     public String getTreatment() {
         return treatment;
-    }
-
-    public void setTreatment(String treatment) {
-        this.treatment = treatment;
     }
 }

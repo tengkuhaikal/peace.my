@@ -47,6 +47,7 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.Educ
             intent.putExtra("symptoms", currentItem.getSymptoms() != null ? currentItem.getSymptoms() : "");
             intent.putExtra("treatment", currentItem.getTreatment() != null ? currentItem.getTreatment() : "");
             intent.putExtra("image", currentItem.getImage());
+            intent.putExtra("icon", currentItem.getIcon());
             context.startActivity(intent);
         });
     }
@@ -57,13 +58,13 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.Educ
     }
 
     public void updateList(ArrayList<EducationItem> filteredList) {
-        educationItemList = filteredList;
+        this.educationItemList = filteredList;
         notifyDataSetChanged();
     }
 
     public class EducationViewHolder extends RecyclerView.ViewHolder {
-        TextView nameTV, descriptionTV, symptomsTV, treatmentTV;
-        ImageView imageIV, iconIV;
+        TextView nameTV;
+        ImageView iconIV;
 
         public EducationViewHolder(@NonNull View itemView) {
             super(itemView);

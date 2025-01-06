@@ -305,5 +305,7 @@
         \n2. Diet:
             \n\t-Iron-rich foods (e.g., spinach, red meat)
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

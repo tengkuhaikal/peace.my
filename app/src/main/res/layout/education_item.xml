@@ -31,6 +31,7 @@
             android:id="@+id/listName"
             android:text="Name"
             android:textColor="@color/font_color_dark"
+            android:fontFamily="@font/poppins_regular"
             android:textSize="20sp"
             android:layout_marginTop="25dp"
             android:layout_marginStart="30dp"
