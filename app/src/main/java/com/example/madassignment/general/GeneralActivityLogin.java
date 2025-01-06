@@ -114,6 +114,7 @@ public class GeneralActivityLogin extends AppCompatActivity {
                     SharedPreferences sharedPreferences = getSharedPreferences("UserSession", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("username", username);
+                    editor.putLong("userID", user.getId());
                     editor.apply();
 
                     // User authenticated successfully, navigate to GeneralBaseActivity
