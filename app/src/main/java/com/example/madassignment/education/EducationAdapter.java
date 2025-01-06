@@ -40,7 +40,7 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.Educ
         holder.iconIV.setImageResource(currentItem.getIcon());
         holder.nameTV.setText(currentItem.getName());
 
-        holder.itemView.setOnClickListener(v-> {
+        holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, EducationActivityDetailed.class);
             intent.putExtra("name", educationItemList.get(position).getName());
             intent.putExtra("description", currentItem.getDescription() != null ? currentItem.getDescription() : "");

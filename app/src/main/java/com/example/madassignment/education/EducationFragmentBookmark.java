@@ -40,7 +40,7 @@ public class EducationFragmentBookmark extends Fragment {
 
         educationAdapter = new EducationAdapter(getContext(), educationItemArrayList);
         recyclerView.setAdapter(educationAdapter);
-       // setupSearchView();
+        // setupSearchView();
 
         return view;
     }

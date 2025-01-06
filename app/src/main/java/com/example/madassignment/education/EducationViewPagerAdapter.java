@@ -14,10 +14,13 @@ public class EducationViewPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position){
-            case 0: return new EducationFragmentAll();
-            case 1: return new EducationFragmentBookmark();
-            default: return new EducationFragmentAll();
+        switch (position) {
+            case 0:
+                return new EducationFragmentAll();
+            case 1:
+                return new EducationFragmentBookmark();
+            default:
+                return new EducationFragmentAll();
         }
     }
 

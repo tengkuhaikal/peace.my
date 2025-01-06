@@ -11,7 +11,8 @@ import java.util.List;
 @Dao
 public interface EducationItemDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE) // Prevent duplicates
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+        // Prevent duplicates
     void insertFavorite(EducationItem educationItem);
 
     @Query("SELECT * FROM education_items")
