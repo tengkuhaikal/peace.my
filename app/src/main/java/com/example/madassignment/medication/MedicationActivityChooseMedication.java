@@ -14,7 +14,7 @@ import com.example.madassignment.R;
 
 public class MedicationActivityChooseMedication extends AppCompatActivity {
 
-    private EditText medicationName, dosage, frequency;
+    private EditText medicationName, dosage, frequency, timeTaken;
     private MedicationDatabase db;
 
     @Override
@@ -26,6 +26,7 @@ public class MedicationActivityChooseMedication extends AppCompatActivity {
         medicationName = findViewById(R.id.medicationName);
         dosage = findViewById(R.id.dosage);
         frequency = findViewById(R.id.frequency);
+        timeTaken = findViewById(R.id.timeTaken);
 
         // Initialize Room database
         db = Room.databaseBuilder(getApplicationContext(), MedicationDatabase.class, "medication-db").build();
@@ -36,15 +37,16 @@ public class MedicationActivityChooseMedication extends AppCompatActivity {
             String name = medicationName.getText().toString().trim();
             String medDosage = dosage.getText().toString().trim();
             String medFrequency = frequency.getText().toString().trim();
+            String medTime = timeTaken.getText().toString().trim();
 
-            if (name.isEmpty() || medDosage.isEmpty() || medFrequency.isEmpty()) {
+            if (name.isEmpty() || medDosage.isEmpty() || medFrequency.isEmpty() || medTime.isEmpty()) {
                 // Display error if any field is empty
                 Toast.makeText(MedicationActivityChooseMedication.this, "Please fill out all fields!", Toast.LENGTH_SHORT).show();
             } else {
                 // Save the data to the Room database in a background thread
                 new Thread(() -> {
-                    Medication medication = new Medication(name, medDosage, medFrequency);
-                    db.medicationDao().insertMedication(medication); // Should work now
+                    Medication medication = new Medication(name, medDosage, medFrequency, medTime);
+                    db.medicationDao().insertMedication(medication);
 
                     // Notify user and reset fields
                     runOnUiThread(() -> {
@@ -52,6 +54,7 @@ public class MedicationActivityChooseMedication extends AppCompatActivity {
                         medicationName.setText("");
                         dosage.setText("");
                         frequency.setText("");
+                        timeTaken.setText("");
                     });
                 }).start();
 
@@ -61,12 +64,9 @@ public class MedicationActivityChooseMedication extends AppCompatActivity {
             }
         });
 
-        // Handling the medication type buttons
+        // Handle medication type buttons
         ImageButton pillButton = findViewById(R.id.pillButton);
-        pillButton.setOnClickListener(v -> {
-            // Logic for selecting pill type (if needed)
-            Toast.makeText(this, "Pill selected", Toast.LENGTH_SHORT).show();
-        });
+        pillButton.setOnClickListener(v -> Toast.makeText(this, "Pill selected", Toast.LENGTH_SHORT).show());
 
         ImageButton capsuleButton = findViewById(R.id.capsuleButton);
         capsuleButton.setOnClickListener(v -> Toast.makeText(this, "Capsule selected", Toast.LENGTH_SHORT).show());

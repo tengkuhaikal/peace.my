@@ -6,6 +6,9 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
+//import com.example.medicationmanagementmodule.database.Medication;
+//import com.example.medicationmanagementmodule.database.MedicationDatabase;
+
 import com.example.madassignment.R;
 
 import java.text.SimpleDateFormat;
@@ -58,6 +61,7 @@ public class MedicationActivityReminder extends AppCompatActivity {
                 medicationDetails.append("Name: ").append(medication.getName())
                         .append("\nDosage: ").append(medication.getDosage())
                         .append("\nFrequency: ").append(medication.getFrequency())
+                        .append("\nTime taken: ").append(medication.getTimeTaken())
                         .append("\n\n");
             }
 

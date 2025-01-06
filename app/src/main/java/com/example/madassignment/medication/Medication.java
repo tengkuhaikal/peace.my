@@ -3,7 +3,7 @@ package com.example.madassignment.medication;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "medications")  // Ensure the table name matches the one used in your query
+@Entity(tableName = "medications")
 public class Medication {
 
     @PrimaryKey(autoGenerate = true)
@@ -11,12 +11,14 @@ public class Medication {
     private String name;
     private String dosage;
     private String frequency;
+    private String timeTaken;
 
     // Constructor
-    public Medication(String name, String dosage, String frequency) {
+    public Medication(String name, String dosage, String frequency, String timeTaken) {
         this.name = name;
         this.dosage = dosage;
         this.frequency = frequency;
+        this.timeTaken = timeTaken;
     }
 
     // Getters and Setters
@@ -50,5 +52,13 @@ public class Medication {
 
     public void setFrequency(String frequency) {
         this.frequency = frequency;
+    }
+
+    public String getTimeTaken() {
+        return timeTaken;
+    }
+
+    public void setTimeTaken(String timeTaken) {
+        this.timeTaken = timeTaken;
     }
 }
