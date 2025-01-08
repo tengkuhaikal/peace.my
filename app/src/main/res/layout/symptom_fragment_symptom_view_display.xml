@@ -23,7 +23,7 @@
         android:id="@+id/descriptionTextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="These diseases and conditions match the factors you have selected"
+        android:text="These diseases and conditions match the symptoms you have selected"
         app:layout_constraintTop_toBottomOf="@id/TV3header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

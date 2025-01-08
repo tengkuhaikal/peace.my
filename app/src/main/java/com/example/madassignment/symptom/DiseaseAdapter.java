@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.example.madassignment.R;
 
 import java.util.List;
@@ -51,8 +52,7 @@ public class DiseaseAdapter extends RecyclerView.Adapter<DiseaseAdapter.DiseaseV
     }
 
     public void updateDiseases(List<DiseaseEntity> newDiseases) {
-        diseaseList.clear();
-        diseaseList.addAll(newDiseases);
+        this.diseaseList = newDiseases;
         notifyDataSetChanged();
     }
 }

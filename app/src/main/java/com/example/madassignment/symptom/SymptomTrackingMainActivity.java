@@ -46,11 +46,7 @@ public class SymptomTrackingMainActivity extends AppCompatActivity {
             }
         });
 
-        // Setup Toolbar
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        backButton = findViewById(R.id.toolbar_backButton);
+        backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener(view -> onBackPressed());
 
         // Tabs Setup
@@ -66,17 +62,17 @@ public class SymptomTrackingMainActivity extends AppCompatActivity {
         tabHistory_Report.setOnClickListener(v -> navigateToFragment(new SymptomViewHistoryFragment()));
 
         // Bottom Navigation
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        //BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Handle bottom navigation item selection
-        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+        /*bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.menu_item_home) {
-                navigateToFragment(new SymptomSelectionFragment());
+                navigateToFragment(new SymptomSelection());
                 return true;
             }
             return false;
-        });
+        });*/
 
         // Initially load the symptom fragment
         if (savedInstanceState == null) {
@@ -86,12 +82,17 @@ public class SymptomTrackingMainActivity extends AppCompatActivity {
 
     private void navigateToFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment); // Replace the fragment container's content
-        transaction.addToBackStack(null); // Add this transaction to the back stack
-        transaction.commit(); // Commit the transaction
+        Fragment currentFragment = fragmentManager.findFragmentById(R.id.fragment_container);
 
-        // Update tab appearance after navigation
+        if (currentFragment != null && currentFragment.getClass().equals(fragment.getClass())) {
+            return; // Avoid redundant navigation
+        }
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.fragment_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+
         updateTabAppearance(fragment);
     }
 
@@ -126,12 +127,18 @@ public class SymptomTrackingMainActivity extends AppCompatActivity {
     }
 
     private void updateSymptomsUI(List<SymptomEntity> symptoms) {
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("symptoms", new ArrayList<>(symptoms));
-        SymptomSelectionFragment symptomSelectionFragment = new SymptomSelectionFragment();
-        symptomSelectionFragment.setArguments(bundle);
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
-        // Update UI by navigating to symptom fragment
-        navigateToFragment(symptomSelectionFragment);
+        if (currentFragment instanceof SymptomSelectionFragment) {
+            ((SymptomSelectionFragment) currentFragment).updateSymptomsList(symptoms); // Pass data directly to the fragment
+        } else {
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList("symptoms", new ArrayList<>(symptoms));
+            SymptomSelectionFragment symptomSelectionFragment = new SymptomSelectionFragment();
+            symptomSelectionFragment.setArguments(bundle);
+
+            navigateToFragment(symptomSelectionFragment); // Only navigate if it's not already the current fragment
+        }
     }
+
 }

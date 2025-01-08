@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public class SymptomSelectionFragment extends Fragment {
 
     private SymptomViewModel symptomViewModel;
     private SymptomAdapter symptomAdapter;
-    private List<String> selectedSymptoms = new ArrayList<>(); // List to track selected symptoms
+    private List<String> selectedSymptoms = new ArrayList<>();
 
     @Nullable
     @Override
@@ -35,7 +36,7 @@ public class SymptomSelectionFragment extends Fragment {
 
         // RecyclerView setup
         RecyclerView recyclerView = view.findViewById(R.id.symptom_recycler_view);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2)); // 2 columns for GridView
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         symptomAdapter = new SymptomAdapter(new ArrayList<>());
         recyclerView.setAdapter(symptomAdapter);
 
@@ -51,31 +52,32 @@ public class SymptomSelectionFragment extends Fragment {
             }
         });
 
+        // Handle submit button click
         Button submitButton = view.findViewById(R.id.submit_button1);
-        View.OnClickListener button = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Passing selected symptoms to the next fragment
-                Bundle bundle = new Bundle();
-                bundle.putStringArrayList("selectedSymptoms", new ArrayList<>(selectedSymptoms));
+        submitButton.setOnClickListener(v -> {
+            selectedSymptoms = symptomAdapter.getSelectedSymptoms();
+            Log.d("SymptomSelection", "Selected Symptoms: " + selectedSymptoms); // Debug log
 
-                // Perform the fragment transaction
-                Fragment relatedFactorsFragment = new RelatedFactorSelectionFragment();
-                relatedFactorsFragment.setArguments(bundle);
-                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList("selectedSymptoms", new ArrayList<>(selectedSymptoms));
 
-                // Replace the current fragment with the new fragment
-                transaction.replace(R.id.fragment_container, relatedFactorsFragment);
-                transaction.addToBackStack(null); // Optional: adds to the back stack for "Back" navigation
-                transaction.commit(); // Commit the transaction
+            Fragment relatedFactorsFragment = new RelatedFactorSelectionFragment();
+            relatedFactorsFragment.setArguments(bundle);
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
 
-                // This ensures the tab appearance is updated after navigating
-                ((SymptomTrackingMainActivity) getActivity()).updateTabAppearance(relatedFactorsFragment);
-            }
-        };
+            transaction.replace(R.id.fragment_container, relatedFactorsFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
-        submitButton.setOnClickListener(button);
+            ((SymptomTrackingMainActivity) getActivity()).updateTabAppearance(relatedFactorsFragment);
+        });
 
         return view;
+    }
+    // This method is called from MainActivity to update the symptom list
+    public void updateSymptomsList(List<SymptomEntity> symptoms) {
+        if (symptomAdapter != null) {
+            symptomAdapter.updateSymptoms(symptoms); // Update the adapter with new symptoms
+        }
     }
 }
