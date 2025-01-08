@@ -7,73 +7,75 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.madassignment.R;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class RelatedFactorSelectionFragment extends Fragment {
-    private RecyclerView factorsRecyclerView;
-    private FactorAdapter factorsAdapter;
-    private List<String> factorsList; // This will hold dynamic factors like "Cold Weather", etc.
-
     public RelatedFactorSelectionFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.symptom_fragment_related_factor_selection, container, false);
 
-        // Initialize RecyclerView
-        factorsRecyclerView = view.findViewById(R.id.factors_recycler_view);
-        factorsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext())); // Use vertical layout
+        // Retrieve the selected symptoms passed from SymptomSelectionFragment
+        Bundle args = getArguments();
+        ArrayList<String> selectedSymptoms = null;
+        if (args != null) {
+            selectedSymptoms = args.getStringArrayList("selectedSymptoms");
+            Log.d("RelatedFactorsSelection", "Received selected symptoms: " + selectedSymptoms);
+        } else {
+            Log.e("RelatedFactorsSelection", "Arguments are null. Unable to retrieve selected symptoms.");
+        }
 
-        // Create data source for the RecyclerView
-        factorsList = getFactorsList(); // You can fetch this from a database or define it manually
+        // Set OnClickListeners for each factor (TextView)
+        setFactorClickListener(view, R.id.factor1, "Cold Weather");
+        setFactorClickListener(view, R.id.factor2, "Allergy");
+        setFactorClickListener(view, R.id.factor3, "Stress");
+        setFactorClickListener(view, R.id.factor4, "Heat");
+        setFactorClickListener(view, R.id.factor5, "Infection");
 
-        // Initialize adapter
-        factorsAdapter = new FactorAdapter(factorsList);
-
-        // Set adapter to RecyclerView
-        factorsRecyclerView.setAdapter(factorsAdapter);
-
+        // Handle submit button click
+        ArrayList<String> finalSelectedSymptoms = selectedSymptoms;
         Button submitButton = view.findViewById(R.id.submit_button);
-        View.OnClickListener button = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Perform the fragment transaction
-                Fragment viewDisplay3 = new SymptomViewDisplayFragment();
-                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-
-                // Replace the current fragment with the new fragment
-                transaction.replace(R.id.fragment_container, viewDisplay3);
-                transaction.addToBackStack(null); // Optional: adds to the back stack for "Back" navigation
-                transaction.commit(); // Commit the transaction
-
-                // This ensures the tab appearance is updated after navigating
-                ((SymptomTrackingMainActivity) getActivity()).updateTabAppearance(viewDisplay3);
+        submitButton.setOnClickListener(v -> {
+            // Navigate to the next fragment
+            Fragment viewDisplay3 = new SymptomViewDisplayFragment();
+            if (finalSelectedSymptoms != null) {
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList("selectedSymptoms", finalSelectedSymptoms); // Forward the selected symptoms
+                viewDisplay3.setArguments(bundle);
             }
-        };
-        submitButton.setOnClickListener(button);
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, viewDisplay3);
+            transaction.addToBackStack(null); // Optional: adds to the back stack for "Back" navigation
+            transaction.commit(); // Commit the transaction
+
+            // Ensure tab appearance is updated
+            ((SymptomTrackingMainActivity) getActivity()).updateTabAppearance(viewDisplay3);
+        });
 
         return view;
     }
 
-    // Method to fetch factors dynamically (you can modify this to load data from a database)
-    private List<String> getFactorsList() {
-        return Arrays.asList("Cold Weather", "Allergy", "Stress", "Heat", "Infection");
+    // Method to set click listeners for each factor
+    private void setFactorClickListener(View view, int factorId, String factorName) {
+        TextView factorTextView = view.findViewById(factorId);
+        factorTextView.setOnClickListener(v -> {
+            // Display feedback or take action when a factor is clicked
+            Toast.makeText(getContext(), "Selected: " + factorName, Toast.LENGTH_SHORT).show();
+        });
     }
 }
-
-//no button handled

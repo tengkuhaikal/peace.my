@@ -13,15 +13,12 @@ public interface SymptomDao {
     @Insert
     void insert(SymptomEntity symptom);
 
-    @Insert
-    void insertAll(SymptomEntity... symptoms);
-
-    @Query("SELECT * FROM SymptomEntity WHERE name = :name LIMIT 1")
+    @Query("SELECT * FROM symptoms WHERE name = :name LIMIT 1")
     SymptomEntity findByName(String name);
 
-    @Query("SELECT * FROM SymptomEntity")
+    @Query("SELECT * FROM symptoms")
     LiveData<List<SymptomEntity>> getAllSymptoms();
 
-    @Query("SELECT * FROM SymptomEntity WHERE name IN (:names)")
+    @Query("SELECT * FROM symptoms WHERE name IN (:names)")
     LiveData<List<SymptomEntity>> getSymptomHistory(List<String> names);
 }

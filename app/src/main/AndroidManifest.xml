@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,7 +19,10 @@
         <!-- Symptom Tracking -->
         <activity
             android:name=".symptom.SymptomTrackingMainActivity"
-            android:exported="false" />
+            android:exported="false">
+
+        </activity>
+
 
         <!-- General -->
         <activity
@@ -40,11 +46,12 @@
         <activity
             android:name=".general.GeneralActivityMain"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
+
         <activity
             android:name=".general.GeneralActivityLogin"
             android:exported="false" />

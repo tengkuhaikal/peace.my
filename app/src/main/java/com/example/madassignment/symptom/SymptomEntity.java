@@ -9,17 +9,21 @@ import androidx.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-@Entity
+import java.util.Date;
+
+@Entity(tableName = "symptoms")
 public class SymptomEntity implements Parcelable {
 
     @NonNull
     @PrimaryKey
     private String name;
     private String description;
+    private Date date;
 
     // Constructor
-    public SymptomEntity(String name){
+    public SymptomEntity(String name, Date date){
         this.name = name;
+        this.date = date;
     }
 
     // Getters and setters
@@ -37,6 +41,10 @@ public class SymptomEntity implements Parcelable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getDate(){
+        return date;
     }
 
     // Parcelable implementation
