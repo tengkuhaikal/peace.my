@@ -25,5 +25,3 @@ public abstract class EducationAppDatabase extends RoomDatabase {
         return INSTANCE;
     }
 }
-
-
