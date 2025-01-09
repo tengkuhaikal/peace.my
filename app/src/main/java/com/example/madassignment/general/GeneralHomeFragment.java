@@ -15,6 +15,7 @@ import com.example.madassignment.calendar.CalendarActivityMain;
 import com.example.madassignment.education.EducationActivityMain;
 import com.example.madassignment.medication.MedicationActivityMedicationManagement;
 import com.example.madassignment.symptom.SymptomTrackingMainActivity;
+import com.example.madassignment.appointment.AppointmentActivityMain;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class GeneralHomeFragment extends Fragment {
     private ImageButton medicationManagementButton;
     private ImageButton educationButton;
     private ImageButton calendarButton;
-
+    private ImageButton appointmentButton;
     public GeneralHomeFragment() {
 
     }
@@ -55,6 +56,7 @@ public class GeneralHomeFragment extends Fragment {
         medicationManagementButton = rootView.findViewById(R.id.IBHomeMedicationManagement);
         educationButton = rootView.findViewById(R.id.IBHomeEducation);
         calendarButton = rootView.findViewById(R.id.IBHomeCalendar);
+        appointmentButton = rootView.findViewById(R.id.IBHomeAppointment);
 
         startNewsUpdates();
 
@@ -69,6 +71,9 @@ public class GeneralHomeFragment extends Fragment {
         );
         calendarButton.setOnClickListener(v ->
                 startActivity(new Intent(getActivity(), CalendarActivityMain.class))
+        );
+        appointmentButton.setOnClickListener(v ->
+                startActivity(new Intent(getActivity(), AppointmentActivityMain.class))
         );
 
         return rootView;
