@@ -43,7 +43,7 @@ public class MedicationActivityReminder extends AppCompatActivity {
 
         // Update the TextViews with current values
         todayTextView.setText(day);
-        dateTimeTextView.setText(date + ", " + time); // Combine date and time
+        dateTimeTextView.setText(String.format(date + ", " + time)); // Combine date and time
 
         // Set up the back arrow to handle back navigation
         ImageView backArrow = findViewById(R.id.backButtonFromReminder);
