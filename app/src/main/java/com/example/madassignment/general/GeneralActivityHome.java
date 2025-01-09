@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.madassignment.R;
+import com.example.madassignment.appointment.AppointmentActivityMain;
 import com.example.madassignment.calendar.CalendarActivityMain;
 import com.example.madassignment.education.EducationActivityMain;
 import com.example.madassignment.medication.MedicationActivityMedicationManagement;
@@ -63,6 +64,12 @@ public class GeneralActivityHome extends GeneralBaseActivity {
         ImageButton calendarButton = findViewById(R.id.IBHomeCalendar);
         calendarButton.setOnClickListener(v ->
                 startActivity(new Intent(this, CalendarActivityMain.class))
+        );
+
+        // Appointment Button
+        ImageButton appointmentButton = findViewById(R.id.IBHomeAppointment);
+        appointmentButton.setOnClickListener(v ->
+                startActivity(new Intent(this, AppointmentActivityMain.class))
         );
 
         // No need to call setActivePage here, it's handled by GeneralBaseActivity
