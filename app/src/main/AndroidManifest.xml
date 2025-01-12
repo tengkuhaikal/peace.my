@@ -92,7 +92,7 @@
 
         <activity
             android:name=".calendar.CalendarActivityAppointment"
-            android:exported="false" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.INSERT" />
                 <data android:mimeType="vnd.android.cursor.dir/event" />
@@ -102,7 +102,7 @@
 
         <activity
             android:name=".calendar.CalendarActivityMedication"
-            android:exported="false" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.INSERT" />
                 <data android:mimeType="vnd.android.cursor.dir/event" />

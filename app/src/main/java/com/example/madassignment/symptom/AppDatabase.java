@@ -20,7 +20,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract SymptomDao symptomDao();
 
     // Migration object to migrate from version 1 to version 2
-    public static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+    public static final Migration MIGRATION_1_2 = new Migration(2, 1) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
             // Check if the table exists
