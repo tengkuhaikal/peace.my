@@ -29,14 +29,17 @@ public class GeneralActivityForgotPassword extends AppCompatActivity {
                 // Simulate sending OTP
                 sendOTP(phone);
 
-                // Pass to ResetPasswordActivity
-                Intent intent = new Intent(GeneralActivityForgotPassword.this, GeneralActivityResetPassword.class);
+                // Pass username to RequestTACActivity
+                Intent intent = new Intent(GeneralActivityForgotPassword.this, GeneralActivityRequestTac.class);
                 intent.putExtra("username", username);
                 startActivity(intent);
+
+                finish();
             } else {
                 Toast.makeText(GeneralActivityForgotPassword.this, "Please enter both username and phone number", Toast.LENGTH_SHORT).show();
             }
         });
+
 
         cancelButton.setOnClickListener(v -> {
             // Back to the login page
@@ -48,9 +51,5 @@ public class GeneralActivityForgotPassword extends AppCompatActivity {
     private void sendOTP(String phone) {
         // Simulate OTP sending
         Toast.makeText(this, "OTP sent to " + phone, Toast.LENGTH_SHORT).show();
-
-        // Navigate to RequestTACActivity
-        startActivity(new Intent(GeneralActivityForgotPassword.this, GeneralActivityRequestTac.class));
-        finish();
     }
 }

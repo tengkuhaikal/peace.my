@@ -23,9 +23,10 @@ public class GeneralActivityRequestTac extends AppCompatActivity {
 
         verifyButton.setOnClickListener(v -> {
             String tacCode = tacCodeEditText.getText().toString();
+            String username = getIntent().getStringExtra("username");
 
             if (!tacCode.isEmpty()) {
-                verifyTAC(tacCode);
+                verifyTAC(tacCode, username);
             } else {
                 Toast.makeText(GeneralActivityRequestTac.this, "Please enter the TAC", Toast.LENGTH_SHORT).show();
             }
@@ -42,11 +43,13 @@ public class GeneralActivityRequestTac extends AppCompatActivity {
         });
     }
 
-    private void verifyTAC(String tacCode) {
+    private void verifyTAC(String tacCode, String username) {
         // Simulate TAC verification
-        if ("1234".equals(tacCode)) {  // Placeholder for actual TAC validation
-            // Navigate to reset password page
-            startActivity(new Intent(GeneralActivityRequestTac.this, GeneralActivityResetPassword.class));
+        if ("1234".equals(tacCode)) {
+            // Navigate to ResetPasswordActivity
+            Intent intent = new Intent(GeneralActivityRequestTac.this, GeneralActivityResetPassword.class);
+            intent.putExtra("username", username);
+            startActivity(intent);
             finish();
         } else {
             Toast.makeText(GeneralActivityRequestTac.this, "Invalid TAC", Toast.LENGTH_SHORT).show();
