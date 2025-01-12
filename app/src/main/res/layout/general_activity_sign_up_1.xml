@@ -23,7 +23,6 @@
         android:id="@+id/IBSignUpBackArrow"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginStart="6dp"
         android:layout_marginTop="20dp"
         android:background="@android:color/transparent"
         android:contentDescription="Go Back"
@@ -251,7 +250,7 @@
     <Button
         android:id="@+id/BtnSignUpNext"
         android:layout_width="315dp"
-        android:layout_height="36dp"
+        android:layout_height="48dp"
         android:layout_marginStart="52dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/primary_button"
@@ -266,7 +265,7 @@
     <Button
         android:id="@+id/BtnSignUpCancel"
         android:layout_width="315dp"
-        android:layout_height="34dp"
+        android:layout_height="48dp"
         android:layout_marginStart="52dp"
         android:layout_marginBottom="25dp"
         android:background="@drawable/secondary_button"
