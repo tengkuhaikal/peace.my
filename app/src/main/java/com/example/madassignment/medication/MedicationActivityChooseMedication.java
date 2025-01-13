@@ -15,20 +15,20 @@ import com.example.madassignment.R;
 public class MedicationActivityChooseMedication extends AppCompatActivity {
 
     private EditText medicationName, dosage, frequency, timeTaken;
-    private MedicationDatabase db;
+    private MedicationDatabase db; // room database to store medication data
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medication_activity_choose_medication);
 
-        // Initialize input fields
+        // user input
         medicationName = findViewById(R.id.medicationName);
         dosage = findViewById(R.id.dosage);
         frequency = findViewById(R.id.frequency);
         timeTaken = findViewById(R.id.timeTaken);
 
-        // Initialize Room database
+        // Initialize Room database ---> a room database instantiate with the name medication-db.it provide data storage to store medication data
         db = Room.databaseBuilder(getApplicationContext(), MedicationDatabase.class, "medication-db").build();
 
         // Handle "Set" button click

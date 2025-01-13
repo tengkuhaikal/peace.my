@@ -18,12 +18,12 @@ import java.util.Locale;
 
 public class MedicationActivityReminder extends AppCompatActivity {
 
-    private MedicationDatabase db;
+    private MedicationDatabase db; // room database to fetch medication details
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.medication_activity_reminder); // Use activity_reminder.xml
+        setContentView(R.layout.medication_activity_reminder);
 
         // Find the TextViews
         TextView todayTextView = findViewById(R.id.TVDay);
@@ -49,11 +49,10 @@ public class MedicationActivityReminder extends AppCompatActivity {
         ImageView backArrow = findViewById(R.id.backButtonFromReminder);
         backArrow.setOnClickListener(v -> onBackPressed());  // Go back to the previous activity
 
-        // Initialize Room database
         db = Room.databaseBuilder(getApplicationContext(), MedicationDatabase.class, "medication-db").build();
 
         // Fetch and display the medications
-        new Thread(() -> {
+        new Thread(() -> { // retrieve all medication record using medicationDao().getAlllMedications();
             List<Medication> medications = db.medicationDao().getAllMedications();
             StringBuilder medicationDetails = new StringBuilder();
 

@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.madassignment.R;
+import com.example.madassignment.appointment.AppointmentActivityMain;
+import com.example.madassignment.calendar.CalendarActivityMain;
 import com.example.madassignment.general.GeneralHomeFragment;
 
 public class MedicationActivityMedicationManagement extends AppCompatActivity {
@@ -25,6 +27,20 @@ public class MedicationActivityMedicationManagement extends AppCompatActivity {
         ImageView arrowToReminder = findViewById(R.id.backButtonFromReminder);
         arrowToReminder.setOnClickListener(v -> {
             Intent intent = new Intent(MedicationActivityMedicationManagement.this, MedicationActivityReminder.class);
+            startActivity(intent);
+        });
+
+        // Navigate back to AppointmentActivityMain
+        ImageView arrowToAppointment = findViewById(R.id.arrowBackToAppointment);
+        arrowToAppointment.setOnClickListener(v -> {
+            Intent intent = new Intent(MedicationActivityMedicationManagement.this, AppointmentActivityMain.class);
+            startActivity(intent);
+        });
+
+        // Navigate back to calendarActivityMain
+        ImageView arrowToCalendar = findViewById(R.id.arrowBackToCalendar);
+        arrowToCalendar.setOnClickListener(v -> {
+            Intent intent = new Intent(MedicationActivityMedicationManagement.this, CalendarActivityMain.class);
             startActivity(intent);
         });
 
