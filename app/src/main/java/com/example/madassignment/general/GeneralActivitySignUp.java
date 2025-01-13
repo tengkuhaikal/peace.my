@@ -27,6 +27,7 @@ public class GeneralActivitySignUp extends AppCompatActivity {
     private void showStepOne() {
         setContentView(R.layout.general_activity_sign_up_1);
 
+        ImageButton backButton = findViewById(R.id.IBSignUpBackArrow);
         EditText firstNameEditText = findViewById(R.id.PTSignUpFirstName);
         EditText lastNameEditText = findViewById(R.id.PTSignUpLastName);
         EditText usernameEditText = findViewById(R.id.PTSignUpUsername);
@@ -35,10 +36,14 @@ public class GeneralActivitySignUp extends AppCompatActivity {
         Button nextButton = findViewById(R.id.BtnSignUpNext);
         Button cancelButton = findViewById(R.id.BtnSignUpCancel);
 
-        cancelButton.setOnClickListener(v -> {
-            startActivity(new Intent(GeneralActivitySignUp.this, GeneralActivityLogin.class));
-            finish();
-        });
+        Intent intent = getIntent();
+        if (intent != null) {
+            populateStepOneFields(intent, firstNameEditText, lastNameEditText, usernameEditText, passwordEditText, confirmPasswordEditText);
+        }
+
+        backButton.setOnClickListener(v -> navigateToLogin());
+
+        cancelButton.setOnClickListener(v -> navigateToLogin());
 
         nextButton.setOnClickListener(v -> {
             String firstName = firstNameEditText.getText().toString();
@@ -47,20 +52,38 @@ public class GeneralActivitySignUp extends AppCompatActivity {
             String password = passwordEditText.getText().toString();
             String confirmPassword = confirmPasswordEditText.getText().toString();
 
-            if (TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) ||
-                    TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
-                Toast.makeText(GeneralActivitySignUp.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-            } else if (!password.equals(confirmPassword)) {
-                Toast.makeText(GeneralActivitySignUp.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
-            } else {
+            if (validateStepOneFields(firstName, lastName, username, password, confirmPassword)) {
                 showStepTwo(firstName, lastName, username, password);
             }
         });
     }
 
+    private void populateStepOneFields(Intent intent, EditText firstNameEditText, EditText lastNameEditText, EditText usernameEditText, EditText passwordEditText, EditText confirmPasswordEditText) {
+        firstNameEditText.setText(intent.getStringExtra("firstName"));
+        lastNameEditText.setText(intent.getStringExtra("lastName"));
+        usernameEditText.setText(intent.getStringExtra("username"));
+        String password = intent.getStringExtra("password");
+        if (password != null) {
+            passwordEditText.setText(password);
+            confirmPasswordEditText.setText(password);
+        }
+    }
+
+    private boolean validateStepOneFields(String firstName, String lastName, String username, String password, String confirmPassword) {
+        if (TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (!password.equals(confirmPassword)) {
+            Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
     private void showStepTwo(String firstName, String lastName, String username, String password) {
         setContentView(R.layout.general_activity_sign_up_2);
 
+        ImageButton backButton = findViewById(R.id.IBSignUp2BackArrow);
         EditText addressEditText = findViewById(R.id.PASignUp2Address);
         EditText address2EditText = findViewById(R.id.PASignUp2Address2);
         EditText postcodeEditText = findViewById(R.id.TNSignUp2Postcode);
@@ -71,28 +94,11 @@ public class GeneralActivitySignUp extends AppCompatActivity {
         Button nextButton = findViewById(R.id.BtnSignUp2Next);
         Button cancelButton = findViewById(R.id.BtnSignUp2Cancel);
 
-        String[] states = getResources().getStringArray(R.array.states_array);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, states);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        stateSpinner.setAdapter(adapter);
+        setupStateSpinner(stateSpinner);
+        setupDOBPicker(dobTextView);
 
-        dobTextView.setOnClickListener(v -> {
-            Calendar calendar = Calendar.getInstance();
-            int year = calendar.get(Calendar.YEAR);
-            int month = calendar.get(Calendar.MONTH);
-            int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-            new DatePickerDialog(GeneralActivitySignUp.this, (view, selectedYear, selectedMonth, selectedDay) -> {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                String formattedDate = dateFormat.format(new java.util.Date(selectedYear - 1900, selectedMonth, selectedDay));
-                dobTextView.setText(formattedDate);
-            }, year, month, day).show();
-        });
-
-        cancelButton.setOnClickListener(v -> {
-            startActivity(new Intent(GeneralActivitySignUp.this, GeneralActivityLogin.class));
-            finish();
-        });
+        backButton.setOnClickListener(v -> navigateBackToStepOne(firstName, lastName, username, password));
+        cancelButton.setOnClickListener(v -> navigateToLogin());
 
         nextButton.setOnClickListener(v -> {
             String address = addressEditText.getText().toString();
@@ -103,32 +109,77 @@ public class GeneralActivitySignUp extends AppCompatActivity {
             String dob = dobTextView.getText().toString();
             String phone = phoneEditText.getText().toString();
 
-            if (TextUtils.isEmpty(address) || TextUtils.isEmpty(postcode) || TextUtils.isEmpty(city) ||
-                    state.equals("Select State") || TextUtils.isEmpty(dob) || TextUtils.isEmpty(phone)) {
-                Toast.makeText(GeneralActivitySignUp.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-            } else if (!isValidPhoneNumber(phone)) {
-                Toast.makeText(GeneralActivitySignUp.this, "Invalid phone number format", Toast.LENGTH_SHORT).show();
-            } else {
-                executorService.execute(() -> {
-                    try {
-                        GeneralUser user = new GeneralUser(username, password, firstName, lastName, address, address2, postcode, city, state, dob, phone);
-                        GeneralAppDatabase.getDatabase(getApplicationContext()).generalUserDao().insertUser(user);
-                        Log.d("SignUpActivity", "User inserted successfully: " + username);  // Log the inserted username
-                    } catch (Exception e) {
-                        Log.e("SignUpActivity", "Error inserting user: ", e);  // Log any error
-                    }
-                });
-
-                runOnUiThread(() -> {
-                    Toast.makeText(GeneralActivitySignUp.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(GeneralActivitySignUp.this, GeneralActivityLogin.class));
-                    finish();
-                });
+            if (validateStepTwoFields(address, postcode, city, state, dob, phone)) {
+                registerUser(firstName, lastName, username, password, address, address2, postcode, city, state, dob, phone);
             }
         });
     }
 
+    private void setupStateSpinner(Spinner stateSpinner) {
+        String[] states = getResources().getStringArray(R.array.states_array);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, states);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        stateSpinner.setAdapter(adapter);
+    }
+
+    private void setupDOBPicker(TextView dobTextView) {
+        dobTextView.setOnClickListener(v -> {
+            Calendar calendar = Calendar.getInstance();
+            new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
+                String formattedDate = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(
+                        new java.util.Date(year - 1900, month, dayOfMonth)
+                );
+                dobTextView.setText(formattedDate);
+            },
+                    calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
+        });
+    }
+
+    private boolean validateStepTwoFields(String address, String postcode, String city, String state, String dob, String phone) {
+        if (TextUtils.isEmpty(address) || TextUtils.isEmpty(postcode) || TextUtils.isEmpty(city) ||
+                state.equals("Select State") || TextUtils.isEmpty(dob) || TextUtils.isEmpty(phone)) {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (!isValidPhoneNumber(phone)) {
+            Toast.makeText(this, "Invalid phone number format", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
     private boolean isValidPhoneNumber(String phone) {
         return phone.matches("\\d{10}"); // Basic check for a 10-digit phone number
+    }
+
+    private void registerUser(String firstName, String lastName, String username, String password, String address, String address2, String postcode, String city, String state, String dob, String phone) {
+        executorService.execute(() -> {
+            try {
+                GeneralUser user = new GeneralUser(username, password, firstName, lastName, address, address2, postcode, city, state, dob, phone);
+                GeneralAppDatabase.getDatabase(getApplicationContext()).generalUserDao().insertUser(user);
+                Log.d("SignUpActivity", "User inserted successfully: " + username);
+
+                runOnUiThread(() -> {
+                    Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
+                    navigateToLogin();
+                });
+            } catch (Exception e) {
+                Log.e("SignUpActivity", "Error inserting user: ", e);
+            }
+        });
+    }
+
+    private void navigateToLogin() {
+        startActivity(new Intent(this, GeneralActivityLogin.class));
+        finish();
+    }
+
+    private void navigateBackToStepOne(String firstName, String lastName, String username, String password) {
+        Intent intent = new Intent(this, GeneralActivitySignUp.class);
+        intent.putExtra("firstName", firstName);
+        intent.putExtra("lastName", lastName);
+        intent.putExtra("username", username);
+        intent.putExtra("password", password);
+        startActivity(intent);
+        finish();
     }
 }
