@@ -28,6 +28,8 @@ import java.util.Locale;
 public class SymptomViewHistoryFragment extends Fragment {
     private SymptomViewModel symptomViewModel; // ViewModel to fetch symptom data
     private SymptomHistoryAdapter adapter;
+    private final List<SymptomEntity> cumulativeHistory = new ArrayList<>();
+
 
     public SymptomViewHistoryFragment() {
         // Required empty public constructor
@@ -75,6 +77,7 @@ public class SymptomViewHistoryFragment extends Fragment {
             symptomViewModel.getSymptomHistory(selectedSymptoms).observe(getViewLifecycleOwner(), history -> {
                 if (history != null && !history.isEmpty()) {
                     adapter.updateData(history);
+                    addToCumulativeHistory(history);
                 } else {
                     Toast.makeText(requireContext(), "No history found for selected symptoms.", Toast.LENGTH_SHORT).show();
                 }
@@ -84,6 +87,7 @@ public class SymptomViewHistoryFragment extends Fragment {
             symptomViewModel.getSymptomsLiveData().observe(getViewLifecycleOwner(), history -> {
                 if (history != null) {
                     adapter.updateData(history);
+                    addToCumulativeHistory(history);
                 }
             });
         }
@@ -93,6 +97,15 @@ public class SymptomViewHistoryFragment extends Fragment {
         generateReportButton.setOnClickListener(v -> generateReport(adapter.getSymptoms()));
 
         return view;
+    }
+
+    // Method to add symptoms to the cumulative history list
+    private void addToCumulativeHistory(List<SymptomEntity> newSymptoms) {
+        for (SymptomEntity symptom : newSymptoms) {
+            if (!cumulativeHistory.contains(symptom)) { // Avoid duplicates
+                cumulativeHistory.add(symptom);
+            }
+        }
     }
 
     /**
