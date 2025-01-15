@@ -26,7 +26,7 @@
 
             <TextView
                 android:id="@+id/TVHeaderMedicationManagement"
-                android:layout_width="320dp"
+                android:layout_width="284dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="16dp"
@@ -179,6 +179,7 @@
                         android:textSize="14sp" />
 
                     <ImageView
+                        android:id="@+id/arrowBackToAppointment"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:layout_gravity="center_vertical"
@@ -340,6 +341,7 @@
                         android:textSize="14sp" />
 
                     <ImageView
+                        android:id="@+id/arrowBackToCalendar"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:layout_gravity="center_vertical"

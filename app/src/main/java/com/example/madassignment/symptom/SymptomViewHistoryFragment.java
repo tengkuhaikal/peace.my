@@ -22,12 +22,14 @@ import java.io.FileWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class SymptomViewHistoryFragment extends Fragment {
     private SymptomViewModel symptomViewModel; // ViewModel to fetch symptom data
     private SymptomHistoryAdapter adapter;
+    private final List<SymptomEntity> cumulativeHistory = new ArrayList<>(); // Holds all observed symptoms
 
     public SymptomViewHistoryFragment() {
         // Required empty public constructor
@@ -45,7 +47,7 @@ public class SymptomViewHistoryFragment extends Fragment {
         SymptomViewModelFactory factory = new SymptomViewModelFactory(symptomDao);
         symptomViewModel = new ViewModelProvider(this, factory).get(SymptomViewModel.class);
 
-        // Insert predefined symptoms (only for the first app run, optional)
+        // Optionally insert predefined symptoms (e.g., only on the first app run)
         symptomViewModel.insertSymptoms();
     }
 
@@ -63,50 +65,66 @@ public class SymptomViewHistoryFragment extends Fragment {
         // Retrieve selected symptoms passed from another fragment
         List<String> selectedSymptoms = getArguments() != null ? getArguments().getStringArrayList("selectedSymptoms") : new ArrayList<>();
 
-        // Add logging to verify the retrieved symptoms
+        // Log the retrieved symptoms for debugging
         if (selectedSymptoms != null && !selectedSymptoms.isEmpty()) {
             Log.d("SymptomViewHistory", "Selected Symptoms: " + selectedSymptoms);
         } else {
             Log.d("SymptomViewHistory", "No selected symptoms passed. Showing all symptoms.");
         }
 
+        // Fetch and observe symptom history based on the input
         if (selectedSymptoms != null && !selectedSymptoms.isEmpty()) {
-            // Observe only the selected symptoms from the database
             symptomViewModel.getSymptomHistory(selectedSymptoms).observe(getViewLifecycleOwner(), history -> {
                 if (history != null && !history.isEmpty()) {
                     adapter.updateData(history);
+                    addToCumulativeHistory(history);
                 } else {
                     Toast.makeText(requireContext(), "No history found for selected symptoms.", Toast.LENGTH_SHORT).show();
                 }
             });
         } else {
-            // Observe all symptoms if no specific symptoms were passed
             symptomViewModel.getSymptomsLiveData().observe(getViewLifecycleOwner(), history -> {
                 if (history != null) {
                     adapter.updateData(history);
+                    addToCumulativeHistory(history);
                 }
             });
         }
 
-        // Generate Report button
+        // Generate Report button functionality
         Button generateReportButton = view.findViewById(R.id.generateReportButton);
-        generateReportButton.setOnClickListener(v -> generateReport(adapter.getSymptoms()));
+        generateReportButton.setOnClickListener(v -> generateReport());
 
         return view;
+    }
+
+    // Method to add symptoms to the cumulative history list without duplicates
+    private void addToCumulativeHistory(List<SymptomEntity> newSymptoms) {
+        for (SymptomEntity symptom : newSymptoms) {
+            if (!cumulativeHistory.contains(symptom)) { // Avoid duplicates
+                cumulativeHistory.add(symptom);
+            }
+        }
     }
 
     /**
      * Method to generate a symptom history report.
      */
-    private void generateReport(List<SymptomEntity> symptomHistory) {
+    private void generateReport() {
+        if (cumulativeHistory.isEmpty()) {
+            Toast.makeText(requireContext(), "No history available to generate the report.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Get the Downloads directory
         File downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         if (!downloadsDir.exists()) {
             downloadsDir.mkdirs(); // Ensure the directory exists
         }
 
-        // Define the report file in the Downloads directory
-        File reportFile = new File(downloadsDir, "symptom_history_report.txt");
+        // Generate a unique filename using a timestamp
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
+        File reportFile = new File(downloadsDir, "symptom_history_report_" + timestamp + ".txt");
 
         try (FileWriter writer = new FileWriter(reportFile)) {
             writer.write("Symptom History Report\n");
@@ -114,7 +132,7 @@ public class SymptomViewHistoryFragment extends Fragment {
 
             // Write each symptom with its date to the report
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
-            for (SymptomEntity symptom : symptomHistory) {
+            for (SymptomEntity symptom : cumulativeHistory) {
                 String date = symptom.getDate() != null ? dateFormat.format(symptom.getDate()) : "Unknown date";
                 writer.write("- " + symptom.getName() + " (Date: " + date + ")\n");
             }
@@ -126,5 +144,4 @@ public class SymptomViewHistoryFragment extends Fragment {
             Toast.makeText(requireContext(), "Failed to generate report.", Toast.LENGTH_SHORT).show();
         }
     }
-
 }
